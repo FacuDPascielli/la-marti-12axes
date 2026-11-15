@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Martí · Brújula Patria Grande &amp; Plan de Educación Humana Integral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg>
+        </span>
+        <div>
+          <h1>12 Axes · La Martí</h1>
+          <p class="brand-sub">Patria Grande · Del perfil militante al Plan de Educación Humana Integral</p>
+        </div>
+      </div>
+      <nav class="nav-steps" aria-label="Etapas de la formación">
+        <button class="step-btn active" data-tab="axes">
+          <span class="step-num">1</span>
+          <span class="step-label">12 Axes</span>
+        </button>
+        <button class="step-btn" data-tab="pdhi-game">
+          <span class="step-num">2</span>
+          <span class="step-label">Desafío PDHI</span>
+        </button>
+        <button class="step-btn" data-tab="educacion-pg">
+          <span class="step-num">3</span>
+          <span class="step-label">Diagnóstico Educativo</span>
+        </button>
+        <button class="step-btn" data-tab="plan-12-ejes">
+          <span class="step-num">4</span>
+          <span class="step-label">12 Ejes Educación</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- TAB 1: 12 AXES PATRIA GRANDE -->
+    <section id="tab-axes" class="tab-panel active">
+      <div id="axes-intro">
+        <div class="axes-hero-split">
+          <div class="axes-hero-copy">
+            <div class="eyebrow">• UNA MIRADA MÁS CLARA DE NUESTRA MILITANCIA</div>
+            <h2 class="display-title">Tu militancia.<br><span class="accent-ochre">En doce dimensiones.</span></h2>
+            <p class="lead-text">
+              Inspirado en <strong>12 Axes</strong>, este test no mide "izquierda vs. derecha": mapea tus posiciones
+              en <strong>6 tensiones estratégicas (12 polos)</strong> dentro de Patria Grande, el campo nacional-popular y la pedagogía latinoamericana.
+            </p>
+            <div class="hero-actions">
+              <button id="btn-start-quiz" class="btn btn-navy btn-lg">Encuentra mis 12 ejes →</button>
+              <button id="btn-view-saved-results" class="btn btn-outline hidden">Ver mi último resultado</button>
+              <a href="#modelo-ejes" class="btn btn-ghost-clean">Explora los ejes ↓</a>
+            </div>
+            <div class="hero-meta-strip">
+              <span>✓ 24 afirmaciones</span>
+              <span>·</span>
+              <span>38 referentes, movimientos e hitos</span>
+              <span>·</span>
+              <span>100% en tu navegador</span>
+            </div>
+          </div>
+
+          <div class="hero-radar-stack">
+            <div class="radar-preview-card">
+              <div class="radar-card-head">
+                <span>• Explora un ejemplo</span>
+                <span class="radar-badge">6 EJES / 12 POLOS</span>
+              </div>
+              <div class="radar-tabs" id="hero-radar-tabs">
+                <button class="radar-tab active" data-preset="0">Pedagogía Popular</button>
+                <button class="radar-tab" data-preset="1">Planificación Estatal</button>
+                <button class="radar-tab" data-preset="2">Síntesis DHI</button>
+              </div>
+              <div id="hero-radar-svg-wrap" class="radar-svg-wrap"></div>
+              <div class="radar-mini-footer" id="hero-radar-footer"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="modelo-ejes" class="model-explorer">
+          <div class="model-explorer-head">
+            <div>
+              <div class="eyebrow-muted">01 / EL MODELO</div>
+              <h3 class="section-title-lg">¿Cuáles son los 12 ejes?</h3>
+            </div>
+            <p class="model-sub">Explorá cada tensión estratégica antes de hacer el test. Hacé clic en un eje para ver sus dos polos.</p>
+          </div>
+          <div class="model-grid">
+            <div id="axes-selector-list" class="axes-selector-list"></div>
+            <div id="axis-focus-card" class="axis-focus-card"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="axes-quiz" class="quiz-shell hidden">
+        <div class="quiz-top-meta">
+          <span id="quiz-progress-text">Pregunta 1 de 24</span>
+          <span id="quiz-pct-text">0% completo</span>
+        </div>
+        <div id="quiz-segments" class="quiz-segments"></div>
+
+        <div class="card quiz-card-clean">
+          <div id="quiz-watermark" class="quiz-watermark">01</div>
+          <div id="quiz-axis-pill" class="quiz-axis-pill"></div>
+          <div id="quiz-question-wrap" class="question-animate">
+            <h3 id="quiz-question-text" class="quiz-question-clean"></h3>
+          </div>
+          <div class="likert-options-clean">
+            <button class="likert-btn-clean" data-value="2">
+              <span class="opt-left"><span class="opt-icon agree-strong">✓</span> Totalmente de acuerdo</span>
+              <span class="opt-key">1</span>
+            </button>
+            <button class="likert-btn-clean" data-value="1">
+              <span class="opt-left"><span class="opt-icon agree">✓</span> De acuerdo</span>
+              <span class="opt-key">2</span>
+            </button>
+            <button class="likert-btn-clean" data-value="0">
+              <span class="opt-left"><span class="opt-icon neutral">−</span> Neutral / Depende</span>
+              <span class="opt-key">3</span>
+            </button>
+            <button class="likert-btn-clean" data-value="-1">
+              <span class="opt-left"><span class="opt-icon disagree">✕</span> En desacuerdo</span>
+              <span class="opt-key">4</span>
+            </button>
+            <button class="likert-btn-clean" data-value="-2">
+              <span class="opt-left"><span class="opt-icon disagree-strong">✕</span> Totalmente en desacuerdo</span>
+              <span class="opt-key">5</span>
+            </button>
+          </div>
+          <div class="quiz-card-note">Teclado: 1–5 para responder · Tu progreso se guarda en este dispositivo.</div>
+        </div>
+
+        <div class="quiz-bottom-controls">
+          <button id="btn-prev-q" class="btn btn-outline" disabled>← Atrás</button>
+          <label class="auto-advance-toggle">
+            <input type="checkbox" id="chk-auto-advance" checked />
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span>Avanzar en la respuesta</span>
+          </label>
+          <div style="display:flex; gap:0.5rem;">
+            <button id="btn-reset-quiz" class="btn btn-ghost-clean" title="Reiniciar cuestionario">Reiniciar</button>
+            <button id="btn-next-q" class="btn btn-navy">Próximo →</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="axes-results" class="hidden">
+        <div class="card results-header-card">
+          <div class="results-top">
+            <div>
+              <span class="hero-tag">Tu mapa interno en Patria Grande</span>
+              <h2>Resultados de tus 12 Ejes</h2>
+            </div>
+            <div class="results-actions">
+              <button id="btn-copy-results" class="btn btn-secondary">Copiar resumen para compartir</button>
+              <button id="btn-retake-quiz" class="btn btn-ghost">Volver a hacer</button>
+            </div>
+          </div>
+          <div class="results-split-layout">
+            <div class="results-radar-box">
+              <div id="results-radar-svg-wrap" class="radar-svg-wrap"></div>
+              <p class="radar-caption">Tu perfil en 6 tensiones estratégicas</p>
+            </div>
+            <div id="axes-bars-container" class="axes-bars"></div>
+          </div>
+        </div>
+
+        <div class="card constellation-card">
+          <span class="hero-tag">Tus polos predominantes en la historia</span>
+          <h3>Tus Ejes más Fuertes e Hitos que los Representan</h3>
+          <p class="section-desc">
+            Según hacia dónde se inclinó más tu brújula, estos son los hitos, leyes y gestas del campo popular vinculados a tus definiciones.
+          </p>
+          <div id="dominant-poles-milestones" class="matches-grid"></div>
+        </div>
+
+        <div class="card constellation-card">
+          <span class="hero-tag">Afinidades históricas y políticas</span>
+          <h3>Tu constelación en el movimiento</h3>
+          <p class="section-desc">
+            Calculamos tu cercanía con 38 referentes, próceres, movimientos históricos e hitos vinculados al Plan de Desarrollo Humano Integral según tus respuestas.
+          </p>
+          <div id="constellation-matches" class="matches-grid"></div>
+          <div class="all-profiles-toggle">
+            <button id="btn-toggle-all-profiles" class="btn btn-ghost">Ver compatibilidad con los 38 perfiles del espectro →</button>
+            <div id="all-profiles-list" class="all-profiles-list hidden"></div>
+          </div>
+        </div>
+
+        <div class="next-step-banner card">
+          <div>
+            <strong>¿Ya tenés tu perfil?</strong>
+            <p>Pasá al Juego del PDHI para descubrir cómo estas discusiones se traducen en propuestas concretas de país.</p>
+          </div>
+          <button class="btn btn-primary" data-goto="pdhi-game">Ir a Etapa 2: Desafío PDHI →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: JUEGO DEL PDHI -->
+    <section id="tab-pdhi-game" class="tab-panel">
+      <div class="card section-intro">
+        <div class="section-head-row">
+          <div>
+            <span class="hero-tag">Etapa 2 · Juego interactivo sobre el Plan de Desarrollo Humano Integral</span>
+            <h2>Desafío PDHI: ¿Qué propone nuestro proyecto?</h2>
+            <p>
+              Basado en <em>Perspectivas estratégicas para el desarrollo humano integral de la Argentina</em> (Fundación DHI - CLACSO, 2026).
+              Resolvé 10 situaciones reales del país para desbloquear los ejes clave del plan.
+            </p>
+          </div>
+          <div class="score-box">
+            <span class="score-label">Puntaje</span>
+            <strong id="game-score">0 / 10</strong>
+          </div>
+        </div>
+      </div>
+
+      <div id="game-board" class="card game-card">
+        <div class="quiz-header">
+          <span id="game-progress-text" class="pill">Desafío 1 de 10</span>
+          <span id="game-chapter-tag" class="axis-hint"></span>
+        </div>
+        <h3 id="game-scenario-title" class="game-title"></h3>
+        <p id="game-scenario-desc" class="game-desc"></p>
+        <div id="game-options" class="game-options"></div>
+        <div id="game-feedback" class="game-feedback hidden"></div>
+        <div class="quiz-footer">
+          <button id="btn-game-restart" class="btn btn-ghost">Reiniciar juego</button>
+          <button id="btn-game-next" class="btn btn-primary hidden">Siguiente desafío →</button>
+        </div>
+      </div>
+
+      <div id="game-summary" class="card hidden">
+        <span class="hero-tag">¡Desafío completado!</span>
+        <h3 id="game-final-title"></h3>
+        <p id="game-final-text"></p>
+        <div id="game-unlocked-axes" class="unlocked-grid"></div>
+        <div class="hero-actions" style="margin-top: 1.5rem;">
+          <button id="btn-game-replay" class="btn btn-secondary">Jugar de nuevo</button>
+          <button class="btn btn-primary" data-goto="educacion-pg">Ir a Etapa 3: Diagnóstico Educativo →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: EDUCACIÓN SEGÚN PATRIA GRANDE / FDHI -->
+    <section id="tab-educacion-pg" class="tab-panel">
+      <div class="card section-intro">
+        <span class="hero-tag">Etapa 3 · Síntesis de los documentos de la Fundación DHI</span>
+        <h2>La Educación que plantea el PDHI</h2>
+        <p>
+          Datos y propuestas extraídos de <em>Política educativa: fortalecer la escuela para reducir desigualdades</em>
+          (<em>Perspectivas estratégicas</em>, 2026) y del informe <em>Educación: Estado de situación en CABA</em> (FDHI, junio 2026).
+        </p>
+      </div>
+
+      <div class="stats-grid" id="edu-stats-grid"></div>
+
+      <div class="card">
+        <div class="filter-bar">
+          <h3>Propuestas programáticas por nivel y ejes transversales</h3>
+          <div class="filter-pills" id="edu-filter-pills">
+            <button class="filter-pill active" data-edu-cat="all">Todos</button>
+            <button class="filter-pill" data-edu-cat="niveles">Niveles educativos</button>
+            <button class="filter-pill" data-edu-cat="formacion">Formación Docente</button>
+            <button class="filter-pill" data-edu-cat="transversal">Comunidad, Digital y Evaluación</button>
+          </div>
+        </div>
+        <div id="edu-proposals-grid" class="proposals-grid"></div>
+      </div>
+
+      <div class="next-step-banner card">
+        <div>
+          <strong>Ahora nos toca a nosotros como docentes en formación</strong>
+          <p>Pasemos a debatir en grupos los 12 Ejes propuestos para construir un Plan de Educación Humana Integral.</p>
+        </div>
+        <button class="btn btn-primary" data-goto="plan-12-ejes">Ir a Etapa 4: 12 Ejes de Educación →</button>
+      </div>
+    </section>
+
+    <!-- TAB 4: PROPUESTA DE 12 EJES DE EDUCACIÓN HUMANA INTEGRAL -->
+    <section id="tab-plan-12-ejes" class="tab-panel">
+      <div class="card section-intro">
+        <div class="section-head-row">
+          <div>
+            <span class="hero-tag">Etapa 4 · Trabajo en grupos para la reunión de La Martí</span>
+            <h2>Propuesta: 12 Ejes para un Plan de Educación Humana Integral</h2>
+            <p>
+              Cada eje incluye su <strong>justificación político-ideológica</strong> (para qué y para quiénes educamos),
+              la <strong>problemática real a resolver</strong> y <strong>preguntas disparadoras</strong> para el debate grupal.
+            </p>
+          </div>
+          <div class="group-controls">
+            <label for="group-filter">Filtrar por grupo de taller:</label>
+            <select id="group-filter" class="select-input">
+              <option value="all">Ver los 12 ejes</option>
+              <option value="1">Grupo 1 · Condiciones, Presupuesto y Trabajo (Ejes 1-3)</option>
+              <option value="2">Grupo 2 · Formación Docente y Sistema Formador (Ejes 4-6)</option>
+              <option value="3">Grupo 3 · Sujetos, Cuidado y Comunidad (Ejes 7-9)</option>
+              <option value="4">Grupo 4 · Soberanía, Digital y Proyecto Nacional (Ejes 10-12)</option>
+            </select>
+            <button id="btn-export-notes" class="btn btn-secondary">Copiar relatoría de grupos</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="ejes-12-grid" class="ejes-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>La Martí · Corriente en Formación Docente · Patria Grande</span>
+      <span>Basado en <em>Perspectivas estratégicas</em> (2026) y <em>FDHI Educación CABA</em> (2026)</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
