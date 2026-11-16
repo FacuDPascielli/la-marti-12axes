@@ -498,6 +498,48 @@ window.APP_DATA = {
       vector: [32, 26, 20, 34, 28, 22],
       bio: 'Artista y militante comunista mexicana: reivindicación de las raíces indígenas y populares, arte comprometido, cuerpo político e identidad latinoamericana.'
     },
+    {
+      name: 'Berta Cáceres',
+      type: 'Referente',
+      wiki: 'Berta_Cáceres',
+      vector: [14, 18, 16, 28, 26, 14],
+      bio: 'Lideresa indígena lenca y ambientalista hondureña: defensa de los ríos, los bienes comunes y los territorios frente al extractivismo y las transnacionales.'
+    },
+    {
+      name: 'Rigoberta Menchú',
+      type: 'Referente',
+      wiki: 'Rigoberta_Menchú',
+      vector: [24, 26, 18, 36, 28, 22],
+      bio: 'Lideresa indígena maya quiché y Premio Nobel de la Paz: memoria histórica, defensa de los pueblos originarios, la tierra y los derechos humanos en América Latina.'
+    },
+    {
+      name: 'Marielle Franco',
+      type: 'Referente',
+      wiki: 'Marielle_Franco',
+      vector: [24, 22, 28, 26, 48, 18],
+      bio: 'Socióloga, feminista negra y militante de las favelas de Río de Janeiro: voz de las periferias urbanas, los derechos humanos y la organización comunitaria.'
+    },
+    {
+      name: 'Rosario Vera Peñaloza',
+      type: 'Referente',
+      wiki: 'Rosario_Vera_Peñaloza',
+      vector: [56, 60, 68, 72, 26, 52],
+      bio: '"Maestra de la Patria" riojana: fundadora de los primeros jardines de infantes y museos escolares, defensora del juego y la formación docente pública.'
+    },
+    {
+      name: 'Julieta Lanteri',
+      type: 'Referente',
+      wiki: 'Julieta_Lanteri',
+      vector: [54, 48, 52, 58, 45, 36],
+      bio: 'Médica, sufragista y fundadora del Partido Feminista Nacional: pionera en votar en Argentina, luchó por los derechos de las mujeres, la niñez y la salud pública.'
+    },
+    {
+      name: 'Alicia Moreau de Justo',
+      type: 'Referente',
+      wiki: 'Alicia_Moreau_de_Justo',
+      vector: [60, 56, 48, 62, 42, 46],
+      bio: 'Médica, educadora y militante socialista y de derechos humanos: cofundadora de la APDH, impulsora del voto femenino, la educación popular y el laicismo.'
+    },
     // PRÓCERES
     {
       name: 'José Martí',
@@ -519,6 +561,13 @@ window.APP_DATA = {
       wiki: 'Juana_Azurduy',
       vector: [35, 25, 20, 35, 25, 15],
       bio: 'Luchadora de la emancipación altoperuana y rioplatense. Representa el federalismo desde abajo, la rebeldía popular y las periferias en armas por la independencia.'
+    },
+    {
+      name: 'Bartolina Sisa',
+      type: 'Prócer',
+      wiki: 'Bartolina_Sisa',
+      vector: [24, 18, 16, 32, 22, 14],
+      bio: 'Comandanta aymara del levantamiento anticolonial de 1781 en el Alto Perú: símbolo de la resistencia indígena, campesina y de las mujeres del Sur.'
     },
     {
       name: 'José Gervasio Artigas',
