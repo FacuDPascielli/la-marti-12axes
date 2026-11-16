@@ -422,6 +422,34 @@ window.APP_DATA = {
       bio: 'Impulsor del bolivarianismo del siglo XXI, las misiones educativas y sanitarias en los barrios y la integración latinoamericana (ALBA, UNASUR, CELAC).'
     },
     {
+      name: 'Fidel Castro',
+      type: 'Referente',
+      wiki: 'Fidel_Castro',
+      vector: [76, 80, 14, 72, 68, 52],
+      bio: 'Líder de la Revolución Cubana: campaña nacional de alfabetización, sistema público universal de salud y educación, soberanía antiimperialista e internacionalismo.'
+    },
+    {
+      name: 'Rodolfo Kusch',
+      type: 'Referente',
+      wiki: 'Rodolfo_Kusch',
+      vector: [26, 28, 22, 42, 24, 24],
+      bio: 'Filósofo argentino de la liberación y el "estar" americano: rescató la sabiduría popular e indígena frente al pensamiento colonial importado.'
+    },
+    {
+      name: 'Eduardo Galeano',
+      type: 'Referente',
+      wiki: 'Eduardo_Galeano',
+      vector: [34, 30, 14, 46, 32, 26],
+      bio: 'Autor de "Las venas abiertas de América Latina": memoria crítica del saqueo colonial, pedagogía de la indignación y esperanza desde abajo.'
+    },
+    {
+      name: 'Orlando Fals Borda',
+      type: 'Referente',
+      wiki: 'Orlando_Fals_Borda',
+      vector: [30, 20, 24, 52, 40, 18],
+      bio: 'Sociólogo colombiano creador de la Investigación-Acción Participativa (IAP) y el "sentipensar": construir conocimiento junto a las comunidades campesinas y populares.'
+    },
+    {
       name: 'Pepe Mujica',
       type: 'Referente',
       wiki: 'José_Mujica',
@@ -506,6 +534,27 @@ window.APP_DATA = {
       vector: [72, 80, 20, 65, 55, 75],
       bio: 'Libertador de América. Ejemplo de planificación estratégica continental, austeridad republicana y unidad nuestroamericana frente al poder colonial.'
     },
+    {
+      name: 'Simón Bolívar',
+      type: 'Prócer',
+      wiki: 'Simón_Bolívar',
+      vector: [66, 76, 8, 60, 50, 70],
+      bio: 'El Libertador y artífice del Congreso Anfictiónico de Panamá: "La Patria es América". Proyecto de unidad continental frente a las potencias imperiales.'
+    },
+    {
+      name: 'Mariano Moreno',
+      type: 'Prócer',
+      wiki: 'Mariano_Moreno',
+      vector: [74, 72, 65, 76, 62, 68],
+      bio: 'Motor jacobino de la Revolución de Mayo: autor del Plan de Operaciones, fundador de la Gazeta y la Biblioteca Pública para democratizar la cultura y la soberanía.'
+    },
+    {
+      name: 'Augusto César Sandino',
+      type: 'Prócer',
+      wiki: 'Augusto_César_Sandino',
+      vector: [42, 32, 16, 48, 35, 16],
+      bio: 'General de Hombres Libres en Nicaragua: símbolo de la resistencia antiimperialista campesina y popular en Centroamérica y Nuestra América.'
+    },
     // MOVIMIENTOS HISTÓRICOS
     {
       name: 'Independentistas Latinoamericanos (1810-1824)',
@@ -536,11 +585,18 @@ window.APP_DATA = {
       bio: 'Militancia juvenil y barrial de los 70 que buscó articular peronismo, liberación nacional y protagonismo de las bases en villas, fábricas y universidades.'
     },
     {
-      name: 'Movimientos Globales por la Vivienda y Tierra, Techo y Trabajo',
+      name: 'Movimiento Sin Tierra (MST - Brasil)',
       type: 'Movimiento Histórico',
       wiki: 'Movimiento_de_los_Trabajadores_Rurales_Sin_Tierra',
-      vector: [18, 15, 35, 28, 40, 15],
-      bio: 'Tradición de la UTEP, el MTE, los sin techo (MST/MTST) y redes globales por el hábitat digno: integración socio urbana y organización desde los barrios populares.'
+      vector: [22, 18, 18, 44, 36, 16],
+      bio: 'Mayor movimiento campesino de América Latina: reforma agraria popular, agroecología, escuelas propias del campo ("Pedagogía do Movimento") y formación política.'
+    },
+    {
+      name: 'Movimientos Globales por la Vivienda y Tierra, Techo y Trabajo',
+      type: 'Movimiento Histórico',
+      wiki: 'Unión_de_Trabajadores_y_Trabajadoras_de_la_Economía_Popular',
+      vector: [18, 15, 38, 26, 42, 15],
+      bio: 'Tradición de la UTEP, el MTE y redes globales por el hábitat digno: economía popular, integración socio urbana y organización desde los barrios populares.'
     },
     {
       name: 'Movimiento de Bachilleratos Populares y Empresas Recuperadas',
