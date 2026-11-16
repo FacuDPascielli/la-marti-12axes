@@ -217,7 +217,7 @@
     });
   });
 
-  function buildRadarSVG(values6, accentColor = '#b6682c') {
+  function buildRadarSVG(values6, accentColor = '#178548') {
     const cx = 140;
     const cy = 135;
     const maxR = 88;
@@ -475,7 +475,7 @@
     const userVec = scores.map((s) => s.leftPct);
     const resultsRadarWrap = document.getElementById('results-radar-svg-wrap');
     if (resultsRadarWrap) {
-      resultsRadarWrap.innerHTML = buildRadarSVG(userVec, '#11223a');
+      resultsRadarWrap.innerHTML = buildRadarSVG(userVec, '#0e5930');
     }
 
     // Top 3 strongest poles with their historical milestones
@@ -686,8 +686,9 @@
     fb.innerHTML = '';
     document.getElementById('btn-game-next').classList.add('hidden');
 
+    const shuffledOpts = [...sc.options].sort(() => Math.random() - 0.5);
     const optsEl = document.getElementById('game-options');
-    optsEl.innerHTML = sc.options
+    optsEl.innerHTML = shuffledOpts
       .map(
         (opt, i) => `
         <button class="game-opt-btn" data-opt-idx="${i}">${opt.text}</button>
@@ -700,7 +701,7 @@
         if (state.gameAnswered) return;
         state.gameAnswered = true;
         const chosen = Number(btn.dataset.optIdx);
-        const isCorrect = sc.options[chosen].correct;
+        const isCorrect = shuffledOpts[chosen].correct;
         state.gameHistory[state.gameIndex] = isCorrect;
         if (isCorrect) {
           state.gameScore++;
@@ -714,7 +715,7 @@
 
         optsEl.querySelectorAll('.game-opt-btn').forEach((b, idx) => {
           b.disabled = true;
-          if (sc.options[idx].correct) b.classList.add('correct');
+          if (shuffledOpts[idx].correct) b.classList.add('correct');
           else if (idx === chosen) b.classList.add('wrong');
         });
 
