@@ -366,6 +366,13 @@ window.APP_DATA = {
       bio: 'Reconstrucción de la autoridad política estatal post-2001, desendeudamiento, Memoria-Verdad-Justicia, Ley de Educación Nacional y "No al ALCA" junto a la Patria Grande.'
     },
     {
+      name: 'Axel Kicillof',
+      type: 'Referente',
+      wiki: 'Axel_Kicillof',
+      vector: [80, 84, 58, 68, 72, 76],
+      bio: 'Economista y gobernador bonaerense: defensa del rol planificador del Estado, obra pública, escuelas y universidades provinciales, y soberanía productiva y energética.'
+    },
+    {
       name: 'Arturo Jauretche',
       type: 'Referente',
       wiki: 'Arturo_Jauretche',
@@ -711,23 +718,23 @@ window.APP_DATA = {
     {
       shortLabel: '01 · Producción',
       chapter: 'Cap. 1 · Modelo Productivo',
-      title: '¿Qué modelo de país necesitamos para generar trabajo digno?',
-      desc: 'Entre 2023 y 2025 cayó la industria y se recortó casi a la mitad el presupuesto en ciencia y tecnología. ¿Cuál es la apuesta del PDHI?',
+      title: '¿Qué diferencia al Desarrollo Humano Integral del desarrollismo clásico?',
+      desc: 'El PDHI coincide con el desarrollismo en industrializar el país, pero marca una diferencia clave en el Prólogo. ¿Cuál es?',
       options: [
         {
-          text: 'Exportar solo materias primas sin valor agregado y esperar que el mercado derrame riqueza.',
+          text: 'Que el desarrollismo propone demasiada intervención estatal cuando debería dejarlo al mercado.',
           correct: false
         },
         {
-          text: 'Impulsar la industria y la ciencia nacional (INVAP, INTA, INTI) junto al reconocimiento de la economía popular.',
+          text: 'Que el desarrollismo encierra su lectura en la producción y la infraestructura, subordinando la distribución, la economía popular, el cuidado y la cultura.',
           correct: true
         },
         {
-          text: 'Frenar toda actividad industrial para evitar cualquier impacto ambiental.',
+          text: 'Que el desarrollismo busca crecer económicamente en lugar de aplicar políticas de "decrecimiento" para frenar el consumo.',
           correct: false
         }
       ],
-      explanation: 'El PDHI combina reindustrialización soberana con fortalecimiento de la economía popular y el cuidado.',
+      explanation: '¡Bien ahí! Esa es la pregunta desempate: el PDHI quiere reindustrializar, pero sin olvidar la economía popular, el cuidado y el derecho a la felicidad.',
       eduLink: 'Conecta con la Educación Técnico-Profesional y las universidades orientadas al desarrollo integral.'
     },
     {
@@ -931,23 +938,23 @@ window.APP_DATA = {
     {
       shortLabel: '11 · Educación',
       chapter: 'Cap. 16 · Política Educativa',
-      title: '¿Qué hacemos cuando baja la natalidad y las escuelas están desbordadas?',
-      desc: 'En muchas jurisdicciones usan la baja natalidad para cerrar grados, mientras las escuelas atienden crisis sociales sin recursos. ¿Qué propone el PDHI?',
+      title: '¿Qué denuncia el capítulo educativo como "exclusión incluyente"?',
+      desc: 'Hoy más del 91% de los chicos está escolarizado, pero el capítulo advierte sobre la "exclusión incluyente". ¿Qué significa ese concepto?',
       options: [
         {
-          text: 'Cerrar cursos y fusionar escuelas para ahorrar presupuesto educativo.',
+          text: 'Que las escuelas públicas rechazan la inscripción de estudiantes de sectores populares.',
           correct: false
         },
         {
-          text: 'Implementar vouchers educativos para que las escuelas compitan entre sí por matrícula.',
-          correct: false
-        },
-        {
-          text: 'Aprovechar la baja natalidad para parejas pedagógicas y jornada completa, sumando inversión y equipos interdisciplinarios.',
+          text: 'Que se incluye a sectores populares en el sistema, pero a través de circuitos desiguales en condiciones, infraestructura y aprendizajes.',
           correct: true
+        },
+        {
+          text: 'Que el exceso de inclusión en escuelas comunes bajó el nivel académico de los sectores medios.',
+          correct: false
         }
       ],
-      explanation: 'Menos estudiantes por aula es una oportunidad histórica para enseñar y acompañar mejor, nunca una excusa para ajustar.',
+      explanation: '¡Pregunta clave de la formación! No alcanza con tener vacante si la escuela está desbordada y reproduce la desigualdad de origen.',
       eduLink: 'Es el corazón de la Etapa 3 y Etapa 4 de nuestra formación.'
     },
     {

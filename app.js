@@ -511,6 +511,134 @@
       )
       .join('');
 
+    const totalScore = state.answers.reduce((acc, v) => acc + (v || 0), 0);
+    const meanAgreement = totalScore / DATA.questions.length;
+    const eeEl = document.getElementById('easter-egg-alert');
+
+    if (meanAgreement <= -0.55) {
+      let eeList = [];
+      if (meanAgreement <= -1.3) {
+        eeList = [
+          {
+            name: 'Javier Milei · Ley Bases y RIGI',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 96,
+            wiki: 'Javier_Milei',
+            bio: 'Rechazaste prácticamente todas las dimensiones del Desarrollo Humano Integral. Perfil compatible con el ajuste fiscal, la reprimarización, la Ley Bases y el RIGI.'
+          },
+          {
+            name: 'Mauricio Macri',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 88,
+            wiki: 'Mauricio_Macri',
+            bio: 'Desfinanciamiento educativo, endeudamiento con el FMI y desregulación de mercado.'
+          },
+          {
+            name: 'Carlos Menem',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 82,
+            wiki: 'Carlos_Menem',
+            bio: 'Privatizaciones, transferencia de escuelas sin financiamiento y reforma neoliberal de los 90.'
+          }
+        ];
+      } else if (meanAgreement <= -0.9) {
+        eeList = [
+          {
+            name: 'Mauricio Macri',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 87,
+            wiki: 'Mauricio_Macri',
+            bio: 'Perfil inclinado a la meritocracia individual, la apertura importadora y la desarticulación de políticas federales.'
+          },
+          {
+            name: 'Miguel Ángel Pichetto',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 81,
+            wiki: 'Miguel_Ángel_Pichetto',
+            bio: 'Giro conservador, punitivismo y distancia de las organizaciones populares y las periferias.'
+          },
+          {
+            name: 'Sergio Massa',
+            type: 'Easter Egg · Fuera de Patria Grande',
+            affinity: 74,
+            wiki: 'Sergio_Massa',
+            bio: 'Pragmatismo moderado con acuerdos de mercado y menor énfasis en la agenda transformadora del PDHI.'
+          }
+        ];
+      } else {
+        eeList = [
+          {
+            name: 'Sergio Massa',
+            type: 'Easter Egg · Alerta de Brújula',
+            affinity: 84,
+            wiki: 'Sergio_Massa',
+            bio: 'Tus respuestas muestran fuerte distancia tanto con el polo popular/comunitario como con las apuestas transformadoras del PDHI.'
+          },
+          {
+            name: 'Guillermo Moreno',
+            type: 'Easter Egg · Alerta de Brújula',
+            affinity: 78,
+            wiki: 'Guillermo_Moreno',
+            bio: 'Nacionalismo tradicionalista alejado de la agenda contemporánea de economía popular, feminismos y ecología integral.'
+          },
+          {
+            name: 'Miguel Ángel Pichetto',
+            type: 'Easter Egg · Alerta de Brújula',
+            affinity: 72,
+            wiki: 'Miguel_Ángel_Pichetto',
+            bio: 'Postura conservadora institucional en tensión con el protagonismo desde las periferias.'
+          }
+        ];
+      }
+
+      const mainEE = eeList[0];
+      eeEl.innerHTML = `
+        <div class="eyebrow" style="color:var(--crimson);">⚠️ EASTER EGG · ALERTA DE BRÚJULA</div>
+        <h3 style="margin-bottom:0.35rem;">¿Seguro/a que no te confundiste de reunión?</h3>
+        <p style="margin:0;">
+          Te recomendamos replantearte si pertenecés a <strong>Patria Grande</strong> o revisar un poco tu manera de ver el mundo,
+          ya que pusiste casi todo en desacuerdo y tenés un perfil más cercano a <strong>${mainEE.name}</strong>.
+        </p>
+      `;
+      eeEl.classList.remove('hidden');
+
+      const constEl = document.getElementById('constellation-matches');
+      constEl.innerHTML = eeList
+        .map(
+          (m, idx) => `
+          <div class="match-card ${idx === 0 ? 'top-match' : ''}" style="border-color:var(--crimson); background:#fdf3f2;">
+            <div class="match-head">
+              <span class="match-type" style="background:var(--crimson);">${m.type}</span>
+              <span class="match-pct" style="color:var(--crimson);">${m.affinity}%</span>
+            </div>
+            <div class="match-identity">
+              <div class="match-avatar">
+                <span>${getInitials(m.name)}</span>
+                <img class="hidden" alt="${m.name}" data-wiki-idx="ee_${idx}" />
+              </div>
+              <h4>${m.name}</h4>
+            </div>
+            <p>${m.bio}</p>
+          </div>
+        `
+        )
+        .join('');
+
+      eeList.forEach((m, idx) => {
+        const img = constEl.querySelector(`img[data-wiki-idx="ee_${idx}"]`);
+        if (img) {
+          img.onerror = () => img.classList.add('hidden');
+          fetchProfilePhoto(m, img);
+        }
+      });
+
+      document.getElementById('all-profiles-list').innerHTML = '';
+      return;
+    }
+
+    eeEl.classList.add('hidden');
+    eeEl.innerHTML = '';
+
     const matches = computeProfileMatches(userVec);
 
     // Pick balanced constellation: top 2 Referente/Prócer, top 1 Movimiento Histórico, top 1 Hito del PDHI

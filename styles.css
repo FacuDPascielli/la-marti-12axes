@@ -1634,3 +1634,148 @@ h1, h2, h3, h4 {
   font-size: 0.84rem;
   color: #11223a;
 }
+
+/* EASTER EGG & MOBILE-FIRST POLISH (CELULAR) */
+.easter-egg-card {
+  background: #fdf3f2;
+  border: 2px solid var(--crimson);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.9rem;
+  }
+
+  .topbar-inner {
+    gap: 0.6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .brand-logo {
+    height: 34px;
+    padding: 4px 8px;
+  }
+
+  .brand h1 {
+    font-size: 0.98rem;
+  }
+
+  .brand-sub {
+    font-size: 0.7rem;
+  }
+
+  .nav-steps {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.35rem;
+  }
+
+  .step-btn {
+    justify-content: center;
+    padding: 0.42rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .axes-hero-split {
+    gap: 1.5rem;
+    padding: 0.75rem 0 1.75rem;
+  }
+
+  .display-title {
+    font-size: 2rem;
+  }
+
+  .radar-preview-card {
+    transform: none;
+    box-shadow: var(--shadow);
+    padding: 1rem;
+  }
+
+  .radar-tabs {
+    font-size: 0.7rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .quiz-card-clean {
+    padding: 1.25rem 1rem 1rem;
+  }
+
+  .quiz-watermark {
+    font-size: 2.6rem;
+    top: 0.5rem;
+    right: 0.85rem;
+  }
+
+  .quiz-question-clean {
+    font-size: 1.08rem;
+    padding-right: 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .likert-btn-clean {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.88rem;
+  }
+
+  .opt-key {
+    display: none;
+  }
+
+  .quiz-bottom-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quiz-bottom-controls .auto-advance-toggle {
+    justify-content: center;
+    padding: 0.25rem 0;
+  }
+
+  .quiz-bottom-controls > div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .axis-bar-row {
+    grid-template-columns: 34px 1fr 34px;
+    gap: 0.4rem;
+  }
+
+  .pole-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .pole-badge svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .bar-wrapper {
+    height: 26px;
+  }
+
+  .axis-poles {
+    font-size: 0.76rem;
+  }
+
+  .matches-grid,
+  .proposals-grid,
+  .unlocked-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-map-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
