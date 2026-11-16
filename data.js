@@ -706,270 +706,270 @@ window.APP_DATA = {
     }
   ],
 
-  // 12 escenarios del juego Desafío PDHI (con distractores capciosos basados en debates reales)
+  // 12 escenarios del juego Desafío PDHI (accesibles sin haber leído el libro, con opciones mezcladas)
   gameScenarios: [
     {
       shortLabel: '01 · Producción',
       chapter: 'Cap. 1 · Modelo Productivo',
-      title: '¿Qué diferencia al Desarrollo Humano Integral del desarrollismo clásico?',
-      desc: 'El Prólogo del libro debate con dos posturas: el liberalismo y el desarrollismo económico tradicional. ¿Cuál es la crítica específica del PDHI al desarrollismo clásico?',
+      title: '¿Qué modelo de país necesitamos para generar trabajo digno?',
+      desc: 'Entre 2023 y 2025 cayó la industria y se recortó casi a la mitad el presupuesto en ciencia y tecnología. ¿Cuál es la apuesta del PDHI?',
       options: [
         {
-          text: 'Que el desarrollismo propone demasiada intervención estatal en infraestructura y energía, cuando debería dejarlo al mercado.',
+          text: 'Exportar solo materias primas sin valor agregado y esperar que el mercado derrame riqueza.',
           correct: false
         },
         {
-          text: 'Que encierra su lectura en la estructura productiva y la infraestructura, subordinando la distribución, la economía popular, el cuidado y la cultura.',
+          text: 'Impulsar la industria y la ciencia nacional (INVAP, INTA, INTI) junto al reconocimiento de la economía popular.',
           correct: true
         },
         {
-          text: 'Que el desarrollismo busca crecer económicamente en lugar de aplicar políticas de "decrecimiento" para frenar el consumo.',
+          text: 'Frenar toda actividad industrial para evitar cualquier impacto ambiental.',
           correct: false
         }
       ],
-      explanation: '¡Ojo al matiz! El PDHI comparte con el desarrollismo el rol planificador del Estado y la reindustrialización, pero discute su sesgo economicista que deja afuera la economía popular, el cuidado y el derecho a la felicidad.',
+      explanation: 'El PDHI combina reindustrialización soberana con fortalecimiento de la economía popular y el cuidado.',
       eduLink: 'Conecta con la Educación Técnico-Profesional y las universidades orientadas al desarrollo integral.'
     },
     {
       shortLabel: '02 · Energía',
       chapter: 'Cap. 2 · Energía Justa y Soberana',
-      title: 'El 84% de nuestra energía primaria viene de petróleo y gas',
-      desc: 'Argentina tiene hidrocarburos, energía nuclear, hidroelectricidad y renovables. ¿Cómo plantea el PDHI organizar la transición energética?',
+      title: '¿Para qué tiene que servir nuestra energía?',
+      desc: 'Argentina cuenta con gas, petróleo, energía nuclear, hidroelectricidad y renovables. ¿Cómo plantea el PDHI usar esos recursos?',
       options: [
         {
-          text: 'Usar los recursos estratégicos para impulsar desarrollo productivo propio, integración territorial, tarifas justas y transición sustentable.',
+          text: 'Para sostener la industria nacional, garantizar tarifas justas en los hogares y financiar la transición sustentable.',
           correct: true
         },
         {
-          text: 'Prohibir de inmediato toda extracción de petróleo y gas para pasar 100% a energía eólica y solar en dos años.',
+          text: 'Para exportarlos sin restricciones al precio internacional aunque las familias y escuelas no puedan pagar la luz o el gas.',
           correct: false
         },
         {
-          text: 'Priorizar la exportación libre de gas y petróleo al precio internacional para acumular reservas, aunque suban las tarifas internas.',
+          text: 'Para apagar de inmediato toda producción de gas y petróleo de un día para el otro.',
           correct: false
         }
       ],
-      explanation: 'El libro plantea una transición realista y soberana: aprovechar los recursos disponibles (incluyendo nuclear y renovables) sin caer ni en el extractivismo exportador ni en cierres abruptos.',
+      explanation: 'La energía es un bien estratégico: lo central es quién se queda con la renta y cómo mejora la vida del pueblo.',
       eduLink: 'Sin tarifas justas ni energía soberana no hay escuelas calefaccionadas ni industria que demande egresados.'
     },
     {
       shortLabel: '03 · Deuda',
       chapter: 'Cap. 3 · Deuda y Macroeconomía',
-      title: '¿Qué propone el PDHI frente a la deuda con el FMI?',
-      desc: 'Los vencimientos con privados para 2026 equivalen al 31% de las reservas del BCRA, sumado al préstamo récord del FMI. ¿Cuál es la estrategia del Cap. 3?',
+      title: '¿Cómo salir de la trampa de la deuda con el FMI?',
+      desc: 'Los vencimientos de deuda ahogan las reservas del Banco Central y condicionan el presupuesto público. ¿Qué propone el PDHI?',
       options: [
         {
-          text: 'Pagar puntualmente todos los vencimientos con superávit fiscal ajustando gasto público para recuperar rápido el acceso al mercado.',
+          text: 'Ajustar aún más jubilaciones, obra pública y educación para pagarle al contado a los acreedores.',
           correct: false
         },
         {
-          text: 'Desconocer unilateralmente toda deuda pública (interna y externa) y salir del sistema financiero internacional.',
+          text: 'Tomar nueva deuda a tasas todavía más altas para patear el problema un año.',
           correct: false
         },
         {
-          text: 'Exigir la corresponsabilidad del FMI para despejar vencimientos hasta recuperar reservas, inflación y poder adquisitivo previos a 2018.',
+          text: 'Exigir la corresponsabilidad del FMI para despejar vencimientos sin ahogar el crecimiento ni los ingresos populares.',
           correct: true
         }
       ],
-      explanation: 'El Cap. 3 distingue entre acreedores privados y FMI, y plantea un sendero estrecho pero viable: corresponsabilidad del Fondo para no ahogar el crecimiento ni los ingresos populares.',
+      explanation: 'El FMI fue corresponsable de una deuda impagable: ningún acuerdo puede estar por encima de la dignidad del pueblo.',
       eduLink: 'Cada punto de deuda pagado con ajuste significa recorte en becas, infraestructura escolar y salarios docentes.'
     },
     {
       shortLabel: '04 · Previsión',
       chapter: 'Cap. 4 · Sistema Previsional',
-      title: 'Reordenar la pirámide y ampliar el acceso previsional',
-      desc: 'El sistema previsional insume entre 30% y 40% del presupuesto nacional. En la comparación histórica del Cap. 4, ¿qué critica sobre la PUAM creada en el macrismo?',
+      title: '¿Cómo cuidar a nuestros jubilados y jubiladas?',
+      desc: 'Millones de trabajadores informales y mujeres que hicieron tareas de cuidado no logran juntar 30 años de aportes formales. ¿Qué defiende el PDHI?',
       options: [
         {
-          text: 'Que mantuvo las moratorias pero subió demasiado los haberes mínimos por encima de los salarios activos.',
+          text: 'Volver a las AFJP privadas y subir la edad jubilatoria para que cada uno se arregle solo.',
           correct: false
         },
         {
-          text: 'Que reemplazó las moratorias por una "prestación de segunda clase" (menor al haber mínimo y no transferible) achatando derechos.',
+          text: 'Sostener un sistema público solidario con moratorias y jubilaciones dignas que reconozcan el trabajo no registrado y de cuidado.',
           correct: true
         },
         {
-          text: 'Que incluyó a las trabajadoras de casas particulares sin exigirles 35 años de aportes formales.',
+          text: 'Dar únicamente pensiones reducidas por debajo de la mínima y no heredables.',
           correct: false
         }
       ],
-      explanation: 'El Cap. 4 reivindica el carácter reparatorio de las moratorias para quienes trabajaron en la informalidad o tareas de cuidado, frente a prestaciones asistenciales reducidas.',
+      explanation: 'Las moratorias previsionales fueron una reparación histórica frente a la informalidad laboral estructural.',
       eduLink: 'La protección de la vejez y el diálogo intergeneracional son pilares del Desarrollo Humano Integral.'
     },
     {
       shortLabel: '05 · Soberanía',
       chapter: 'Cap. 5 · Malvinas, Atlántico Sur y Antártida',
-      title: 'Más que una consigna simbólica',
-      desc: '¿Por qué el Prólogo y el Cap. 5 vinculan la causa Malvinas con la política de Defensa y de Inteligencia Nacional?',
+      title: '¿Por qué Malvinas es clave para el proyecto de país?',
+      desc: 'El Atlántico Sur concentra pesca, rutas marítimas, energía y proyección hacia la Antártida. ¿Cómo aborda el PDHI la cuestión Malvinas?',
       options: [
         {
-          text: 'Porque la usurpación británica en el Atlántico Sur involucra rutas marítimas, pesca, energía y proyección antártica que exigen capacidades estatales soberanas.',
+          text: 'Como una política de Estado que une soberanía territorial, ciencia marítima, defensa e interés nacional.',
           correct: true
         },
         {
-          text: 'Porque proponen resolver el conflicto mediante una compra directa de equipamiento militar ofensivo en alianza con la OTAN.',
+          text: 'Como un reclamo simbólico del pasado que no debe molestar la relación comercial con las potencias.',
           correct: false
         },
         {
-          text: 'Porque sostienen que la defensa nacional debe limitarse únicamente a la vigilancia de fronteras terrestres y protesta diplomática.',
+          text: 'Como un tema exclusivamente militar sin relación con los recursos naturales ni el desarrollo.',
           correct: false
         }
       ],
-      explanation: 'La plataforma continental argentina y el Atlántico Sur son nodos geopolíticos estratégicos que requieren ciencia, defensa e inteligencia al servicio del interés nacional.',
+      explanation: 'Defender Malvinas y el Atlántico Sur es defender nuestros bienes comunes y nuestra soberanía en el siglo XXI.',
       eduLink: 'La causa Malvinas y la soberanía territorial forman parte de los contenidos irrenunciables de nuestra escuela pública.'
     },
     {
       shortLabel: '06 · Seguridad y Justicia',
       chapter: 'Cap. 6 y 8 · Seguridad y Justicia',
-      title: 'Salir de la falsa grieta "mano dura vs. garantismo"',
-      desc: 'El Prólogo reconoce que la inseguridad es "una deuda de nuestro campo político". ¿Qué plantea el PDHI frente al debate securitario?',
+      title: 'Salir de la falsa grieta "mano dura vs. mirar para otro lado"',
+      desc: 'Los barrios populares son quienes más sufren tanto el delito como los abusos judiciales. ¿Qué propone el PDHI?',
       options: [
         {
-          text: 'Endurecer penas y bajar la edad de imputabilidad como señal de autoridad, combinándolo con programas de empleo.',
+          text: 'Bajar la edad de imputabilidad y militarizar los barrios sin políticas sociales.',
           correct: false
         },
         {
-          text: 'Asumir la demanda popular de caminar sin miedo con políticas basadas en evidencia, prevención y reforma judicial, sin demagogia punitiva ni negación.',
+          text: 'Atender la demanda real de seguridad con prevención comunitaria, reforma judicial democrática y acceso a la justicia.',
           correct: true
         },
         {
-          text: 'Postergar cualquier intervención policial en barrios populares hasta que se resuelva por completo la pobreza estructural.',
+          text: 'Minimizar la preocupación por la inseguridad considerándola solo un invento de los medios.',
           correct: false
         }
       ],
-      explanation: 'Los sectores humildes son quienes más sufren el delito predatorio. El libro llama a superar las formalidades y construir soluciones reales desde las necesidades del pueblo.',
+      explanation: 'Salir a la calle sin miedo es un derecho básico: hace falta presencia inteligente del Estado y comunidad organizada.',
       eduLink: 'Las escuelas necesitan redes de prevención de violencias y justicia cercana para cuidar las trayectorias juveniles.'
     },
     {
       shortLabel: '07 · Trabajo e IA',
       chapter: 'Cap. 9 · Nuestra Reforma Laboral',
       title: 'Trabajo, economía popular e inteligencia artificial',
-      desc: 'Citando a Francisco y León XIV sobre la automatización y la IA, ¿cuál es la tesis central del Cap. 9?',
+      desc: 'Frente a reformas laborales que quitan derechos y el avance de la automatización, ¿qué plantea el PDHI?',
       options: [
         {
-          text: 'La cuestión no es si la IA debe usarse o no, sino quién la controla, con qué objetivos se desarrolla y cómo se distribuyen sus beneficios.',
+          text: 'Reivindicar el trabajo en todas sus formas (asalariado, popular y de cuidado) y regular la tecnología para ampliar derechos.',
           correct: true
         },
         {
-          text: 'La IA provocará inexorablemente el "fin del trabajo", por lo que hay que abandonar la centralidad del trabajo y pasar a un ingreso pasivo.',
+          text: 'Flexibilizar contratos y eliminar indemnizaciones para que las empresas contraten pagando menos.',
           correct: false
         },
         {
-          text: 'Para competir globalmente hay que desregular las plataformas digitales y flexibilizar las jornadas laborales.',
+          text: 'Prohibir por ley el uso de computadoras e inteligencia artificial en los lugares de trabajo.',
           correct: false
         }
       ],
-      explanation: 'El PDHI rechaza tanto la tecnofobia como la entrega acrítica a las Big Tech, y reivindica la centralidad del trabajo como eje ordenador de la vida.',
+      explanation: 'La clave no es si se usa tecnología o IA, sino quién la controla y cómo se reparten sus beneficios.',
       eduLink: 'Reconocer el trabajo docente y preparar a jóvenes para un trabajo con derechos es central en la escuela secundaria y superior.'
     },
     {
       shortLabel: '08 · Tierra y Techo',
       chapter: 'Cap. 10 · Techo para Vivir, Tierra para Habitar',
-      title: '1,2 millones de familias viven en barrios populares',
-      desc: 'Frente a la crisis habitacional de inquilinos, jóvenes y barrios populares, ¿qué sostiene el Cap. 10 sobre la vivienda?',
+      title: 'El derecho a la vivienda y los barrios populares',
+      desc: 'Jóvenes que no pueden alquilar y más de 1,2 millones de familias en barrios populares sin servicios básicos. ¿Cuál es la respuesta del PDHI?',
       options: [
         {
-          text: 'Que el crédito hipotecario privado sin intervención estatal alcanza para resolver el déficit si baja la inflación.',
+          text: 'Desregular todos los alquileres y esperar que el mercado inmobiliario construya viviendas baratas.',
           correct: false
         },
         {
-          text: 'Que la solución pasa por construir grandes complejos en las afueras rurales donde la tierra es más barata, aunque falte transporte.',
+          text: 'Erradicar los barrios populares hacia las afueras lejanas sin transporte ni escuelas.',
           correct: false
         },
         {
-          text: 'Que la vivienda es un bien de uso y un derecho que requiere regulación del suelo, integración socio urbana y planificación estatal-comunitaria.',
+          text: 'Planificar el uso del suelo, regular alquileres e impulsar la integración socio urbana de los barrios populares.',
           correct: true
         }
       ],
-      explanation: 'El acceso universal al suelo y al hábitat urbano integrado permite proyectar la vida hacia adelante y evita la segregación espacial.',
+      explanation: 'Tierra, Techo y Trabajo: sin un hábitat digno es imposible proyectar la vida familiar ni educativa.',
       eduLink: 'La urbanización con escuelas, jardines y conectividad en barrios populares garantiza el derecho efectivo a estudiar.'
     },
     {
       shortLabel: '09 · Ambiente y Alimentos',
       chapter: 'Cap. 11 y 12 · Ecología Integral y Alimentación',
-      title: 'Casa Común y soberanía alimentaria',
-      desc: 'El Cap. 12 distingue entre "seguridad alimentaria" y "soberanía alimentaria". ¿Por qué insiste en que son indisociables?',
+      title: 'Casa Común y derecho a la alimentación',
+      desc: 'En un país productor de alimentos donde crece el hambre y la contaminación, ¿qué propone la ecología integral del PDHI?',
       options: [
         {
-          text: 'Porque alcanza con garantizar calorías baratas (aunque sean ultraprocesadas) sin importar quién ni cómo produce los alimentos.',
+          text: 'Postergar el cuidado ambiental hasta que el país sea rico y dejar que los alimentos coticen sin regulación.',
           correct: false
         },
         {
-          text: 'Porque no basta el acceso físico/económico a comida (seguridad): los pueblos deben definir sistemas saludables y agroecológicos (soberanía).',
+          text: 'Combatir la pobreza y cuidar la naturaleza al mismo tiempo, impulsando agroecología y soberanía alimentaria.',
           correct: true
         },
         {
-          text: 'Porque la soberanía alimentaria significa prohibir toda exportación agrícola para abastecer solo el mercado local.',
+          text: 'Garantizar alimentos ultraprocesados baratos en comedores sin importar su calidad nutricional.',
           correct: false
         }
       ],
-      explanation: 'Retomando a Perón (1972) y Laudato Si’ (2015), la crisis social y ambiental es una sola: comer sano y cuidar la tierra van juntos.',
+      explanation: 'No hay dos crisis separadas (una social y otra ambiental), sino una sola crisis socio-ambiental que exige justicia y cuidado.',
       eduLink: 'Impacta directo en el Servicio Alimentario Escolar (SAE) saludable y en la educación ambiental integral.'
     },
     {
       shortLabel: '10 · Salud, Discapacidad y Niñez',
       chapter: 'Cap. 13, 14 y 15 · Cuidado de la Vida',
-      title: '¿Cuál es el punto de partida metodológico de la Fundación DHI?',
-      desc: 'Al pensar políticas de discapacidad, niñez o salud en el Prólogo, ¿qué criterio metodológico proponen como insustituible?',
+      title: '"Los únicos privilegiados son los niños"',
+      desc: 'Crece el malestar en salud mental juvenil y las personas con discapacidad enfrentan recortes y barreras. ¿Qué plantea el PDHI?',
       options: [
         {
-          text: 'Partir primero de la escucha, cercanía e interpretación de las necesidades humanas reales, dando protagonismo a quienes atraviesan esas problemáticas.',
+          text: 'Fortalecer la salud pública, garantizar accesibilidad universal y escuchar a niñeces, familias y personas con discapacidad.',
           correct: true
         },
         {
-          text: 'Diseñar primero los indicadores macroeconómicos y censales desde los ministerios para luego bajarlos sin mediaciones.',
+          text: 'Recortar pensiones y dejar que cada familia resuelva la salud y la discapacidad en el sector privado.',
           correct: false
         },
         {
-          text: 'Delegar el diseño y la ejecución íntegramente en ONGs privadas para evitar burocracia estatal.',
+          text: 'Diseñar políticas desde oficinas técnicas sin participación ni escucha de quienes viven esas realidades.',
           correct: false
         }
       ],
-      explanation: 'Sin cercanía ni participación protagónica de las personas con discapacidad, niñeces y comunidades, el saber técnico se vuelve abstracto o excluyente.',
+      explanation: 'El método del PDHI empieza siempre por escuchar las necesidades humanas reales con cercanía.',
       eduLink: 'Exige Equipos de Orientación Escolar completos y articulación real entre escuela, salud y niñez.'
     },
     {
       shortLabel: '11 · Educación',
       chapter: 'Cap. 16 · Política Educativa',
-      title: '¿Qué es la "exclusión incluyente" que denuncia el capítulo educativo?',
-      desc: 'Hoy la tasa de escolarización obligatoria supera el 91%, pero el Cap. 16 advierte sobre el fenómeno de la "exclusión incluyente" (Gentili). ¿A qué se refiere?',
+      title: '¿Qué hacemos cuando baja la natalidad y las escuelas están desbordadas?',
+      desc: 'En muchas jurisdicciones usan la baja natalidad para cerrar grados, mientras las escuelas atienden crisis sociales sin recursos. ¿Qué propone el PDHI?',
       options: [
         {
-          text: 'A que la escuela excluye directamente a los sectores populares impidiéndoles matricularse en el nivel inicial y primario.',
+          text: 'Cerrar cursos y fusionar escuelas para ahorrar presupuesto educativo.',
           correct: false
         },
         {
-          text: 'A que el exceso de inclusión en escuelas comunes bajó el rendimiento de los estudiantes de sectores medios.',
+          text: 'Implementar vouchers educativos para que las escuelas compitan entre sí por matrícula.',
           correct: false
         },
         {
-          text: 'A que se incluye a sectores postergados pero a través de circuitos desiguales en condiciones, aprendizajes y oportunidades reales.',
+          text: 'Aprovechar la baja natalidad para parejas pedagógicas y jornada completa, sumando inversión y equipos interdisciplinarios.',
           correct: true
         }
       ],
-      explanation: 'No alcanza con estar matriculado si las condiciones materiales, la infraestructura y los aprendizajes reproducen la desigualdad de origen.',
+      explanation: 'Menos estudiantes por aula es una oportunidad histórica para enseñar y acompañar mejor, nunca una excusa para ajustar.',
       eduLink: 'Es el corazón de la Etapa 3 y Etapa 4 de nuestra formación.'
     },
     {
       shortLabel: '12 · Digital y Cultura',
       chapter: 'Cap. 17 y 18 · Transformación Digital y Cultura',
-      title: 'Celulares en el aula e inteligencia artificial',
-      desc: '¿Cuál es la propuesta concreta del Cap. 16 y 17 sobre el uso de celulares en las escuelas obligatorias?',
+      title: 'Tecnología, celulares en el aula y soberanía cultural',
+      desc: 'Frente a la captura de datos por grandes plataformas y el uso excesivo de celulares en clase, ¿qué propone el PDHI?',
       options: [
         {
-          text: 'Avanzar con la suspensión del uso de celulares en niveles obligatorios, reemplazándolos por dispositivos tecnológicos garantizados por el Estado.',
+          text: 'Suspender celulares personales en niveles obligatorios y garantizar dispositivos y plataformas educativas públicas y soberanas.',
           correct: true
         },
         {
-          text: 'Fomentar que cada estudiante use su propio smartphone personal en clase para ahorrar presupuesto en equipamiento escolar.',
+          text: 'Pedirle a cada estudiante que use su propio celular en clase para no comprar equipamiento escolar.',
           correct: false
         },
         {
-          text: 'Prohibir todo dispositivo digital e internet en las escuelas hasta terminar el secundario.',
+          text: 'Eliminar toda enseñanza digital e internet de las escuelas públicas.',
           correct: false
         }
       ],
-      explanation: 'El libro propone suspender el celular personal (que distrae y captura datos) pero garantizando desde el Estado dispositivos pedagógicos y plataformas soberanas.',
+      explanation: 'Ni tecnofobia ni entrega a las Big Tech: el Estado garantiza conectividad, dispositivos pedagógicos y soberanía cultural.',
       eduLink: 'En las escuelas implica ciudadanía digital crítica, dispositivos garantizados por el Estado y regulación de la IA.'
     }
   ],
