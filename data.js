@@ -491,6 +491,13 @@ window.APP_DATA = {
       vector: [38, 42, 25, 55, 22, 42],
       bio: 'Maestra rural chilena y primera Nobel latinoamericana: defensora de la escuela pública rural, los derechos de la infancia y la hermandad cultural de América Latina.'
     },
+    {
+      name: 'Frida Kahlo',
+      type: 'Referente',
+      wiki: 'Frida_Kahlo',
+      vector: [32, 26, 20, 34, 28, 22],
+      bio: 'Artista y militante comunista mexicana: reivindicación de las raíces indígenas y populares, arte comprometido, cuerpo político e identidad latinoamericana.'
+    },
     // PRÓCERES
     {
       name: 'José Martí',
@@ -590,6 +597,13 @@ window.APP_DATA = {
       wiki: 'Movimiento_de_los_Trabajadores_Rurales_Sin_Tierra',
       vector: [22, 18, 18, 44, 36, 16],
       bio: 'Mayor movimiento campesino de América Latina: reforma agraria popular, agroecología, escuelas propias del campo ("Pedagogía do Movimento") y formación política.'
+    },
+    {
+      name: 'Zapatistas (EZLN - México)',
+      type: 'Movimiento Histórico',
+      wiki: 'Ejército_Zapatista_de_Liberación_Nacional',
+      vector: [16, 10, 12, 36, 30, 10],
+      bio: 'Caracoles autónomos de Chiapas: "mandar obedeciendo", escuelitas zapatistas, defensa de la tierra y un mundo donde quepan muchos mundos desde abajo.'
     },
     {
       name: 'Movimientos Globales por la Vivienda y Tierra, Techo y Trabajo',
