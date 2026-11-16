@@ -598,8 +598,66 @@
   });
 
   // ==========================================
-  // MODULE 2: DESAFÍO PDHI (GAME)
+  // MODULE 2: DESAFÍO PDHI (GAME + EXPLORER)
   // ==========================================
+  state.gameStreak = 0;
+  state.gameHistory = new Array(DATA.gameScenarios.length).fill(null);
+
+  document.querySelectorAll('#game-mode-pills .filter-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#game-mode-pills .filter-pill').forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const isMap = pill.dataset.gameMode === 'map';
+      document.getElementById('game-play-view').classList.toggle('hidden', isMap);
+      document.getElementById('game-map-view').classList.toggle('hidden', !isMap);
+    });
+  });
+
+  function renderGameFullExplorer() {
+    const el = document.getElementById('game-full-explorer');
+    if (!el) return;
+    el.innerHTML = DATA.gameScenarios
+      .map((sc) => {
+        const correctOpt = sc.options.find((o) => o.correct);
+        return `
+          <div class="card" style="margin-bottom:0; padding:1.1rem;">
+            <div class="eyebrow" style="margin-bottom:0.3rem;">${sc.chapter}</div>
+            <h4 style="margin-bottom:0.4rem;">${sc.title}</h4>
+            <p style="font-size:0.86rem; color:var(--muted); margin:0 0 0.6rem;">${sc.desc}</p>
+            <div style="font-size:0.86rem; background:#eaf7f0; padding:0.55rem 0.7rem; border-radius:8px; color:#114b2d;">
+              <strong>Propuesta PDHI:</strong> ${correctOpt ? correctOpt.text : ''}
+            </div>
+            <div class="edu-link-pill"><strong>Vínculo educativo:</strong> ${sc.eduLink}</div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+  renderGameFullExplorer();
+
+  function renderGameLiveMap() {
+    const mapEl = document.getElementById('game-live-map');
+    if (!mapEl) return;
+    mapEl.innerHTML = DATA.gameScenarios
+      .map((sc, idx) => {
+        const res = state.gameHistory[idx];
+        let cls = 'map-tile';
+        let icon = '🔒';
+        if (res === true) {
+          cls += ' unlocked-ok';
+          icon = '✓';
+        } else if (res === false) {
+          cls += ' unlocked-fail';
+          icon = '✕';
+        } else if (idx === state.gameIndex) {
+          cls += ' current';
+          icon = '▸';
+        }
+        return `<div class="${cls}">${icon} ${sc.shortLabel}</div>`;
+      })
+      .join('');
+  }
+
   function renderGameScenario() {
     const sc = DATA.gameScenarios[state.gameIndex];
     const total = DATA.gameScenarios.length;
@@ -607,9 +665,21 @@
 
     document.getElementById('game-progress-text').textContent = `Desafío ${state.gameIndex + 1} de ${total}`;
     document.getElementById('game-chapter-tag').textContent = sc.chapter;
+    document.getElementById('game-watermark').textContent = String(state.gameIndex + 1).padStart(2, '0');
     document.getElementById('game-scenario-title').textContent = sc.title;
     document.getElementById('game-scenario-desc').textContent = sc.desc;
     document.getElementById('game-score').textContent = `${state.gameScore} / ${total}`;
+    document.getElementById('game-streak').textContent = `${state.gameStreak} 🔥`;
+
+    const segsEl = document.getElementById('game-segments');
+    segsEl.innerHTML = Array.from({ length: total }, (_, i) => {
+      let cls = 'quiz-seg';
+      if (state.gameHistory[i] !== null) cls += ' done';
+      else if (i === state.gameIndex) cls += ' current';
+      return `<div class="${cls}"></div>`;
+    }).join('');
+
+    renderGameLiveMap();
 
     const fb = document.getElementById('game-feedback');
     fb.classList.add('hidden');
@@ -631,8 +701,16 @@
         state.gameAnswered = true;
         const chosen = Number(btn.dataset.optIdx);
         const isCorrect = sc.options[chosen].correct;
-        if (isCorrect) state.gameScore++;
+        state.gameHistory[state.gameIndex] = isCorrect;
+        if (isCorrect) {
+          state.gameScore++;
+          state.gameStreak++;
+        } else {
+          state.gameStreak = 0;
+        }
         document.getElementById('game-score').textContent = `${state.gameScore} / ${total}`;
+        document.getElementById('game-streak').textContent = `${state.gameStreak} 🔥`;
+        renderGameLiveMap();
 
         optsEl.querySelectorAll('.game-opt-btn').forEach((b, idx) => {
           b.disabled = true;
@@ -640,7 +718,10 @@
           else if (idx === chosen) b.classList.add('wrong');
         });
 
-        fb.innerHTML = `<strong>${isCorrect ? '¡Exacto!' : 'No exactamente.'}</strong> ${sc.explanation}`;
+        fb.innerHTML = `
+          <div><strong>${isCorrect ? '¡Exacto!' : 'No exactamente.'}</strong> ${sc.explanation}</div>
+          <div class="edu-link-pill"><strong>📚 Conexión con Educación:</strong> ${sc.eduLink}</div>
+        `;
         fb.classList.remove('hidden');
 
         const nextBtn = document.getElementById('btn-game-next');
@@ -659,13 +740,14 @@
       document.getElementById('game-summary').classList.remove('hidden');
       document.getElementById('game-final-title').textContent = `Completaste el Desafío PDHI con ${state.gameScore} / ${DATA.gameScenarios.length} aciertos`;
       document.getElementById('game-final-text').textContent =
-        'Estos 10 ejes sintetizan cómo el Plan de Desarrollo Humano Integral y Perspectivas estratégicas (2026) conectan la economía, la soberanía, el ambiente, el hábitat y la educación.';
+        'Estos 12 ejes sintetizan cómo el Plan de Desarrollo Humano Integral y Perspectivas estratégicas (2026) conectan la economía, la soberanía, el ambiente, el hábitat y la educación.';
       document.getElementById('game-unlocked-axes').innerHTML = DATA.gameScenarios
         .map(
           (s) => `
           <div class="unlocked-item">
             <strong>${s.chapter}</strong>
             <div>${s.title}</div>
+            <div style="margin-top:0.35rem; font-size:0.8rem; color:var(--primary-dark);">→ ${s.eduLink}</div>
           </div>
         `
         )
@@ -676,6 +758,8 @@
   function restartGame() {
     state.gameIndex = 0;
     state.gameScore = 0;
+    state.gameStreak = 0;
+    state.gameHistory = new Array(DATA.gameScenarios.length).fill(null);
     document.getElementById('game-summary').classList.add('hidden');
     document.getElementById('game-board').classList.remove('hidden');
     renderGameScenario();

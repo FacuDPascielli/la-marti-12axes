@@ -706,9 +706,10 @@ window.APP_DATA = {
     }
   ],
 
-  // 10 escenarios del juego Desafío PDHI basados en capítulos de Perspectivas estratégicas (2026)
+  // 12 escenarios del juego Desafío PDHI basados en los 18 capítulos de Perspectivas estratégicas (2026)
   gameScenarios: [
     {
+      shortLabel: '01 · Producción',
       chapter: 'Cap. 1 · Modelo Productivo',
       title: '¿Qué hacemos con la estructura productiva argentina?',
       desc: 'Entre 2023 y 2025 la actividad industrial cayó un 8% y el gasto en ciencia y tecnología para 2026 se redujo un 48% real. ¿Cuál es la salida estratégica del PDHI?',
@@ -726,9 +727,11 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'El Prólogo y el Cap. 1 rechazan tanto la reprimarización libertaria como el decrecimiento: proponen crecer complejizando la industria y la ciencia, integrando a la economía popular.'
+      explanation: 'El Prólogo y el Cap. 1 rechazan tanto la reprimarización libertaria como el decrecimiento: proponen crecer complejizando la industria y la ciencia, integrando a la economía popular.',
+      eduLink: 'Conecta con la Educación Técnico-Profesional y las universidades orientadas al desarrollo nacional.'
     },
     {
+      shortLabel: '02 · Energía',
       chapter: 'Cap. 2 · Energía Justa y Soberana',
       title: 'El 84% de nuestra energía primaria viene de petróleo y gas',
       desc: 'Argentina tiene hidrocarburos, energía nuclear, hidroelectricidad y renovables. ¿Cómo plantea el PDHI organizar la transición energética?',
@@ -746,9 +749,11 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'El problema no es solo cuánto se produce sino quién capta la renta y cómo se distribuye para mejorar la vida cotidiana e industrializar el país.'
+      explanation: 'El problema no es solo cuánto se produce sino quién capta la renta y cómo se distribuye para mejorar la vida cotidiana e industrializar el país.',
+      eduLink: 'Sin tarifas justas ni energía soberana no hay escuelas calefaccionadas ni industria que demande egresados.'
     },
     {
+      shortLabel: '03 · Deuda',
       chapter: 'Cap. 3 · Deuda y Macroeconomía',
       title: 'Vencimientos imposibles con acreedores y el FMI',
       desc: 'Los vencimientos proyectados con privados para 2026 equivalen al 31% de las reservas del BCRA, sumado al peso de la deuda con el FMI. ¿Qué propone el libro?',
@@ -766,9 +771,33 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'El Cap. 3 plantea recuperar la sostenibilidad de la deuda sin ahogar el crecimiento, los ingresos populares ni la inversión estratégica.'
+      explanation: 'El Cap. 3 plantea recuperar la sostenibilidad de la deuda sin ahogar el crecimiento, los ingresos populares ni la inversión estratégica.',
+      eduLink: 'Cada punto de deuda pagado con ajuste significa recorte en becas, infraestructura escolar y salarios docentes.'
     },
     {
+      shortLabel: '04 · Previsión',
+      chapter: 'Cap. 4 · Sistema Previsional',
+      title: 'Reordenar la pirámide y ampliar el acceso previsional',
+      desc: 'El sistema previsional insume entre 30% y 40% del presupuesto nacional (7,3 millones de beneficios). ¿Cuál es el criterio del PDHI?',
+      options: [
+        {
+          text: 'Eliminar las moratorias, subir la edad jubilatoria y volver a las AFJP privadas.',
+          correct: false
+        },
+        {
+          text: 'Sostener un sistema público solidario y reparatorio que reconozca a quienes trabajaron sin aportes (especialmente mujeres) y proteja los haberes mínimos.',
+          correct: true
+        },
+        {
+          text: 'Dejar que cada adulto mayor dependa exclusivamente de la asistencia familiar.',
+          correct: false
+        }
+      ],
+      explanation: 'El Cap. 4 reivindica el carácter inclusivo de las moratorias y la actualización ligada al crecimiento, evitando prestaciones de segunda clase.',
+      eduLink: 'La protección de la vejez y el diálogo intergeneracional son pilares del Desarrollo Humano Integral.'
+    },
+    {
+      shortLabel: '05 · Soberanía',
       chapter: 'Cap. 5 · Malvinas, Atlántico Sur y Antártida',
       title: 'Más que una consigna simbólica',
       desc: 'El Atlántico Sur concentra rutas interoceánicas, pesca, energía offshore y proyección antártica. ¿Cómo aborda el PDHI la cuestión Malvinas?',
@@ -786,11 +815,35 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'La plataforma continental argentina y la cuestión Malvinas son piezas clave de un proyecto soberano de desarrollo.'
+      explanation: 'La plataforma continental argentina y la cuestión Malvinas son piezas clave de un proyecto soberano de desarrollo.',
+      eduLink: 'La causa Malvinas y la soberanía territorial forman parte de los contenidos irrenunciables de nuestra escuela pública.'
     },
     {
+      shortLabel: '06 · Seguridad y Justicia',
+      chapter: 'Cap. 6 y 8 · Seguridad y Justicia',
+      title: 'Salir de la falsa grieta "mano dura vs. garantismo"',
+      desc: 'Los sectores más humildes son quienes más sufren el delito predatorio y la falta de acceso a la justicia. ¿Qué propone el PDHI?',
+      options: [
+        {
+          text: 'Bajar la edad de imputabilidad y militarizar los barrios populares sin políticas sociales.',
+          correct: false
+        },
+        {
+          text: 'Abordar la demanda real de seguridad con evidencia, prevención comunitaria, reforma judicial y acceso ciudadano a la justicia.',
+          correct: true
+        },
+        {
+          text: 'Ignorar la preocupación popular por la inseguridad considerándola un invento mediático.',
+          correct: false
+        }
+      ],
+      explanation: 'El Prólogo y los Cap. 6 y 8 proponen escuchar las demandas concretas del pueblo de caminar sin miedo, sin caer en el punitivismo ni en el abandono.',
+      eduLink: 'Las escuelas necesitan redes de prevención de violencias y justicia cercana para cuidar las trayectorias juveniles.'
+    },
+    {
+      shortLabel: '07 · Trabajo e IA',
       chapter: 'Cap. 9 · Nuestra Reforma Laboral',
-      title: 'Trabajo, automatización e inteligencia artificial',
+      title: 'Trabajo, economía popular e inteligencia artificial',
       desc: 'Frente a reformas laborales regresivas y discursos sobre el "fin del trabajo" por la IA, ¿qué defiende el PDHI?',
       options: [
         {
@@ -798,7 +851,7 @@ window.APP_DATA = {
           correct: false
         },
         {
-          text: 'Reivindicar la centralidad del trabajo en todas sus formas y regular la tecnología para que la productividad mejore derechos y tiempo libre.',
+          text: 'Reivindicar la centralidad del trabajo en todas sus formas (asalariado, popular y de cuidado) y regular la tecnología para ampliar derechos.',
           correct: true
         },
         {
@@ -806,9 +859,11 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'Citando a Francisco y León XIV, el Cap. 9 sostiene que la clave no es si se usa IA, sino quién la controla y cómo se distribuyen sus beneficios.'
+      explanation: 'Citando a Francisco y León XIV, el Cap. 9 sostiene que la clave no es si se usa IA, sino quién la controla y cómo se distribuyen sus beneficios.',
+      eduLink: 'Reconocer el trabajo docente y preparar a jóvenes para un trabajo con derechos es central en la escuela secundaria y superior.'
     },
     {
+      shortLabel: '08 · Tierra y Techo',
       chapter: 'Cap. 10 · Techo para Vivir, Tierra para Habitar',
       title: '1,2 millones de familias viven en barrios populares',
       desc: 'Jóvenes que no pueden alquilar, jubilados que no llegan al monoambiente y déficit habitacional estructural. ¿Cuál es el enfoque del PDHI?',
@@ -826,50 +881,56 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'El acceso a la tierra y la vivienda es condición material para proyectar la vida hacia adelante y construir comunidad.'
+      explanation: 'El acceso a la tierra y la vivienda es condición material para proyectar la vida hacia adelante y construir comunidad.',
+      eduLink: 'La urbanización con escuelas, jardines y conectividad en barrios populares garantiza el derecho efectivo a estudiar.'
     },
     {
-      chapter: 'Cap. 11 · Ambiente, Justicia Social y Casa Común',
-      title: 'La falsa grieta entre producción y ambiente',
-      desc: 'Retomando el Mensaje Ambiental de Perón (1972) y Laudato Si’ (2015), ¿qué plantea la ecología integral del PDHI?',
+      shortLabel: '09 · Ambiente y Alimentos',
+      chapter: 'Cap. 11 y 12 · Ecología Integral y Alimentación',
+      title: 'Casa Común y soberanía alimentaria',
+      desc: 'Retomando el Mensaje Ambiental de Perón (1972) y Laudato Si’ (2015) frente a la malnutrición infantil, ¿qué plantea el PDHI?',
       options: [
         {
-          text: 'Que el cuidado ambiental es un lujo de países ricos y hay que postergarlo hasta crecer económicamente.',
+          text: 'Que el cuidado ambiental es un lujo de países ricos y la comida debe regirse por precios internacionales sin regulación.',
           correct: false
         },
         {
-          text: 'Que no hay dos crisis separadas sino una sola crisis socio-ambiental: combatir la pobreza y cuidar la naturaleza van de la mano.',
+          text: 'Que hay una sola crisis socio-ambiental: combatir el hambre con soberanía alimentaria y agroecología mientras cuidamos la Casa Común.',
           correct: true
         },
         {
-          text: 'Que los problemas ambientales se resuelven solo con reciclaje individual de los consumidores.',
+          text: 'Que el problema ambiental y alimentario se resuelve solo con reciclaje individual.',
           correct: false
         }
       ],
-      explanation: 'Discutir el ambiente es discutir quién accede al agua, quién respira aire sano y quién decide sobre el uso del suelo.'
+      explanation: 'Discutir ambiente y alimentación es discutir quién accede al agua, al aire sano y a comida nutritiva.',
+      eduLink: 'Impacta directo en el Servicio Alimentario Escolar (SAE) saludable y en la educación ambiental integral.'
     },
     {
-      chapter: 'Cap. 12 · Derecho a la Alimentación',
-      title: 'Seguridad y soberanía alimentaria',
-      desc: 'En un país productor de alimentos donde crece el hambre y la malnutrición infantil, ¿qué propone el PDHI?',
+      shortLabel: '10 · Salud, Discapacidad y Niñez',
+      chapter: 'Cap. 13, 14 y 15 · Cuidado de la Vida',
+      title: '"Los únicos privilegiados son los niños"',
+      desc: 'Crece el padecimiento de salud mental en infancias y juventudes, y las personas con discapacidad enfrentan barreras cotidianas. ¿Qué propone el PDHI?',
       options: [
         {
-          text: 'Dejar que los precios internos se igualen a los internacionales sin regulación.',
+          text: 'Recortar pensiones, desfinanciar salud mental y dejar el cuidado exclusivamente en manos de las familias.',
           correct: false
         },
         {
-          text: 'Articular seguridad alimentaria (acceso efectivo) con soberanía alimentaria, agroecología y fortalecimiento de comedores y SAE escolares.',
+          text: 'Fortalecer el sistema público de salud, garantizar accesibilidad universal y construir políticas integrales de niñez con protagonismo comunitario.',
           correct: true
         },
         {
-          text: 'Reemplazar la alimentación fresca por ultraprocesados baratos en las escuelas.',
+          text: 'Privatizar los servicios de salud y derivar toda atención a obras sociales comerciales.',
           correct: false
         }
       ],
-      explanation: 'La alimentación saludable en la escuela y en los barrios es un derecho humano y una política central contra la desigualdad.'
+      explanation: 'El Prólogo remarca que las políticas públicas deben escuchar a las propias personas con discapacidad, niñeces y comunidades.',
+      eduLink: 'Exige Equipos de Orientación Escolar completos y articulación real entre escuela, salud y niñez.'
     },
     {
-      chapter: 'Cap. 15 y 16 · Niñez y Política Educativa',
+      shortLabel: '11 · Educación',
+      chapter: 'Cap. 16 · Política Educativa',
       title: 'Las "escuelas desbordadas" y el ajuste educativo',
       desc: 'Con el presupuesto educativo nacional cayendo un 49% real (2023-2026) y escuelas desbordadas por demandas sociales, ¿qué plantea el capítulo educativo?',
       options: [
@@ -886,27 +947,30 @@ window.APP_DATA = {
           correct: false
         }
       ],
-      explanation: 'La escuela no puede sola contra la pobreza: necesita inversión, equipos interdisciplinarios y articulación con salud y organizaciones comunitarias.'
+      explanation: 'La escuela no puede sola contra la pobreza: necesita inversión, equipos interdisciplinarios y articulación con salud y organizaciones comunitarias.',
+      eduLink: 'Es el corazón de la Etapa 3 y Etapa 4 de nuestra formación.'
     },
     {
-      chapter: 'Cap. 17 · Transformación Digital Humana',
-      title: 'Soberanía tecnológica frente a las Big Tech',
-      desc: 'Las grandes plataformas capturan datos educativos y moldean la subjetividad juvenil. ¿Qué propone la Transformación Digital Humana?',
+      shortLabel: '12 · Digital y Cultura',
+      chapter: 'Cap. 17 y 18 · Transformación Digital y Cultura',
+      title: 'Soberanía tecnológica, conectividad y cultura humanista',
+      desc: 'Las grandes plataformas capturan datos y concentran la comunicación. ¿Qué propone el PDHI en los últimos dos capítulos?',
       options: [
         {
-          text: 'Adoptar sin regulación cualquier plataforma comercial extranjera en las escuelas.',
+          text: 'Adoptar sin regulación plataformas comerciales extranjeras y vaciar los medios públicos.',
           correct: false
         },
         {
-          text: 'Desarrollar plataformas educativas públicas y soberanas, regular el uso de IA y proteger los datos de estudiantes y docentes.',
+          text: 'Desarrollar plataformas educativas soberanas, regular la IA, garantizar conectividad universal y fortalecer la cultura popular y audiovisual.',
           correct: true
         },
         {
-          text: 'Desconectar las escuelas de internet para evitar problemas.',
+          text: 'Desconectar las escuelas de internet y cerrar las carreras de comunicación y arte.',
           correct: false
         }
       ],
-      explanation: 'El Estado debe garantizar conectividad y dispositivos propios, promoviendo ciudadanía digital crítica y resguardo de derechos.'
+      explanation: 'La soberanía digital y cultural es clave para que nuestros pueblos no sean meros consumidores pasivos de algoritmos ajenos.',
+      eduLink: 'En las escuelas implica ciudadanía digital crítica, dispositivos garantizados por el Estado y acceso a la cultura.'
     }
   ],
 

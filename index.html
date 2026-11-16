@@ -210,44 +210,72 @@
       <div class="card section-intro">
         <div class="section-head-row">
           <div>
-            <span class="hero-tag">Etapa 2 · Juego interactivo sobre el Plan de Desarrollo Humano Integral</span>
+            <div class="eyebrow">• ETAPA 2 · CONOCER EL PLAN DE DESARROLLO HUMANO INTEGRAL</div>
             <h2>Desafío PDHI: ¿Qué propone nuestro proyecto?</h2>
-            <p>
+            <p class="section-desc" style="margin-bottom:0.75rem;">
               Basado en <em>Perspectivas estratégicas para el desarrollo humano integral de la Argentina</em> (Fundación DHI - CLACSO, 2026).
-              Resolvé 10 situaciones reales del país para desbloquear los ejes clave del plan.
+              Resolvé los 12 desafíos para desbloquear el mapa completo del Plan y ver cómo se conecta cada eje con la educación.
             </p>
+            <div class="filter-pills" id="game-mode-pills">
+              <button class="filter-pill active" data-game-mode="play">Jugar Desafío (12 rondas)</button>
+              <button class="filter-pill" data-game-mode="map">Explorar los 12 Ejes del PDHI</button>
+            </div>
           </div>
-          <div class="score-box">
-            <span class="score-label">Puntaje</span>
-            <strong id="game-score">0 / 10</strong>
+          <div style="display:flex; gap:0.6rem;">
+            <div class="score-box">
+              <span class="score-label">Racha</span>
+              <strong id="game-streak">0 🔥</strong>
+            </div>
+            <div class="score-box">
+              <span class="score-label">Puntaje</span>
+              <strong id="game-score">0 / 12</strong>
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="game-board" class="card game-card">
-        <div class="quiz-header">
-          <span id="game-progress-text" class="pill">Desafío 1 de 10</span>
-          <span id="game-chapter-tag" class="axis-hint"></span>
+      <div id="game-play-view">
+        <div class="quiz-shell" style="max-width:740px;">
+          <div class="quiz-top-meta">
+            <span id="game-progress-text">Desafío 1 de 12</span>
+            <span id="game-chapter-tag" style="color:#b6682c;"></span>
+          </div>
+          <div id="game-segments" class="quiz-segments"></div>
+
+          <div id="game-board" class="card quiz-card-clean">
+            <div id="game-watermark" class="quiz-watermark">01</div>
+            <h3 id="game-scenario-title" class="quiz-question-clean" style="margin-bottom:0.65rem;"></h3>
+            <p id="game-scenario-desc" class="game-desc"></p>
+            <div id="game-options" class="game-options"></div>
+            <div id="game-feedback" class="game-feedback hidden"></div>
+            <div class="quiz-footer">
+              <button id="btn-game-restart" class="btn btn-outline">Reiniciar juego</button>
+              <button id="btn-game-next" class="btn btn-navy hidden">Siguiente desafío →</button>
+            </div>
+          </div>
+
+          <div class="card" style="padding:1rem 1.25rem;">
+            <div style="font-size:0.78rem; font-weight:800; text-transform:uppercase; color:var(--muted); margin-bottom:0.6rem;">
+              Mapa del PDHI (se desbloquea a medida que jugás)
+            </div>
+            <div id="game-live-map" class="live-map-grid"></div>
+          </div>
         </div>
-        <h3 id="game-scenario-title" class="game-title"></h3>
-        <p id="game-scenario-desc" class="game-desc"></p>
-        <div id="game-options" class="game-options"></div>
-        <div id="game-feedback" class="game-feedback hidden"></div>
-        <div class="quiz-footer">
-          <button id="btn-game-restart" class="btn btn-ghost">Reiniciar juego</button>
-          <button id="btn-game-next" class="btn btn-primary hidden">Siguiente desafío →</button>
+
+        <div id="game-summary" class="card hidden">
+          <div class="eyebrow">• ¡DESAFÍO COMPLETADO!</div>
+          <h3 id="game-final-title"></h3>
+          <p id="game-final-text"></p>
+          <div id="game-unlocked-axes" class="unlocked-grid"></div>
+          <div class="hero-actions" style="margin-top: 1.5rem;">
+            <button id="btn-game-replay" class="btn btn-outline">Jugar de nuevo</button>
+            <button class="btn btn-navy" data-goto="educacion-pg">Ir a Etapa 3: Diagnóstico Educativo →</button>
+          </div>
         </div>
       </div>
 
-      <div id="game-summary" class="card hidden">
-        <span class="hero-tag">¡Desafío completado!</span>
-        <h3 id="game-final-title"></h3>
-        <p id="game-final-text"></p>
-        <div id="game-unlocked-axes" class="unlocked-grid"></div>
-        <div class="hero-actions" style="margin-top: 1.5rem;">
-          <button id="btn-game-replay" class="btn btn-secondary">Jugar de nuevo</button>
-          <button class="btn btn-primary" data-goto="educacion-pg">Ir a Etapa 3: Diagnóstico Educativo →</button>
-        </div>
+      <div id="game-map-view" class="hidden">
+        <div id="game-full-explorer" class="unlocked-grid"></div>
       </div>
     </section>
 

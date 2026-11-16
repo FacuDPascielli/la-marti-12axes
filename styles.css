@@ -1582,3 +1582,49 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 }
+
+/* PDHI LIVE MAP & EXPLORER */
+.live-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 0.45rem;
+}
+
+.map-tile {
+  padding: 0.48rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+.map-tile.current {
+  border-color: #b6682c;
+  color: #b6682c;
+  background: #fdf6ef;
+}
+
+.map-tile.unlocked-ok {
+  background: #eaf7f0;
+  border-color: #1e7c4d;
+  color: #145735;
+}
+
+.map-tile.unlocked-fail {
+  background: #fdf2f1;
+  border-color: #c6382b;
+  color: #8b2016;
+}
+
+.edu-link-pill {
+  margin-top: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #d5e2f2;
+  font-size: 0.84rem;
+  color: #11223a;
+}
