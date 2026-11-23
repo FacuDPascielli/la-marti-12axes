@@ -163,26 +163,6 @@
         </div>
       </div>
 
-      <div class="card">
-        <div class="eyebrow">• REGISTRO RÁPIDO DEL PLENARIO DE RESPUESTAS (OPCIONAL)</div>
-        <h3>Anotá qué salió en los gráficos del Forms para llevarlo a tu grupo</h3>
-        <p class="section-desc">Se guarda en este dispositivo y se suma automáticamente si exportás la relatoría en el Paso 3.</p>
-        <div class="forms-notes-grid">
-          <div>
-            <label class="field-label" for="forms-note-top">1. Prioridad / eje que más salió en el Forms:</label>
-            <textarea id="forms-note-top" class="eje-notes" placeholder="Ej: Preocupación por salarios, deserción en 1° año del profesorado..."></textarea>
-          </div>
-          <div>
-            <label class="field-label" for="forms-note-split">2. Tema donde hubo más debate o división:</label>
-            <textarea id="forms-note-split" class="eje-notes" placeholder="Ej: Rol de la virtualidad/IA o relación con UdelaCiudad..."></textarea>
-          </div>
-          <div>
-            <label class="field-label" for="forms-note-missing">3. Algo que faltó o nos sorprendió de los gráficos:</label>
-            <textarea id="forms-note-missing" class="eje-notes" placeholder="Ej: Apareció fuerte el tema salud mental y escuelas desbordadas..."></textarea>
-          </div>
-        </div>
-      </div>
-
       <div class="next-step-banner card">
         <div>
           <strong>¿Ya respondieron todos el Forms?</strong>
@@ -550,26 +530,54 @@
             <span class="hero-tag">Paso 4 · Trabajo en grupos para la Formación 23/11</span>
             <h2>Propuesta: 12 Ejes para un Plan de Educación Humana Integral</h2>
             <p>
-              Cada eje incluye su <strong>justificación político-ideológica</strong> (para qué y para quiénes educamos),
-              la <strong>problemática real a resolver</strong> y <strong>preguntas disparadoras</strong>.
-              <strong>Insumo a armar por cada grupo:</strong> 1) Cómo dialoga con lo que salió en el Forms, 2) 2 propuestas concretas para el Plan, y 3) 1 bandera/consigna para el plenario.
+              Cada grupo trabaja sus ejes, escribe sus propuestas y las envía al <strong>Pizarrón Colectivo en vivo</strong>.
+              Al final podemos descargar todo el pizarrón como <strong>PDF</strong>.
             </p>
+            <div class="filter-pills" id="plan-mode-pills" style="margin-top:0.75rem;">
+              <button class="filter-pill active" data-plan-mode="ejes">📝 Trabajar los 12 Ejes</button>
+              <button class="filter-pill" data-plan-mode="board">📌 Pizarrón Colectivo (<span id="board-count">0</span>)</button>
+            </div>
           </div>
           <div class="group-controls">
-            <label for="group-filter">Filtrar por grupo de taller:</label>
+            <label for="active-sender-group">Tu grupo (para firmar los aportes):</label>
+            <select id="active-sender-group" class="select-input">
+              <option value="Grupo 1">Grupo 1</option>
+              <option value="Grupo 2">Grupo 2</option>
+              <option value="Grupo 3">Grupo 3</option>
+              <option value="Grupo 4">Grupo 4</option>
+            </select>
+            <label for="group-filter">Filtrar ejes por bloque:</label>
             <select id="group-filter" class="select-input">
               <option value="all">Ver los 12 ejes</option>
-              <option value="1">Grupo 1 · Condiciones, Presupuesto y Trabajo (Ejes 1-3)</option>
-              <option value="2">Grupo 2 · Formación Docente y Sistema Formador (Ejes 4-6)</option>
-              <option value="3">Grupo 3 · Sujetos, Cuidado y Comunidad (Ejes 7-9)</option>
-              <option value="4">Grupo 4 · Soberanía, Digital y Proyecto Nacional (Ejes 10-12)</option>
+              <option value="1">Bloque 1 · Condiciones, Presupuesto y Trabajo (Ejes 1-3)</option>
+              <option value="2">Bloque 2 · Formación Docente y Sistema Formador (Ejes 4-6)</option>
+              <option value="3">Bloque 3 · Sujetos, Cuidado y Comunidad (Ejes 7-9)</option>
+              <option value="4">Bloque 4 · Soberanía, Digital y Proyecto Nacional (Ejes 10-12)</option>
             </select>
-            <button id="btn-export-notes" class="btn btn-secondary">Copiar relatoría de grupos</button>
           </div>
         </div>
       </div>
 
-      <div id="ejes-12-grid" class="ejes-grid"></div>
+      <div id="plan-ejes-view">
+        <div id="ejes-12-grid" class="ejes-grid"></div>
+      </div>
+
+      <div id="plan-board-view" class="hidden">
+        <div class="card print-header-only">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <div class="eyebrow">• LA MARTÍ · PATRIA GRANDE · FORMACIÓN 23/11</div>
+              <h2 style="margin:0;">Pizarrón Colectivo: Hacia un Plan de Educación Humana Integral</h2>
+            </div>
+            <div class="no-print" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button id="btn-refresh-board" class="btn btn-outline">🔄 Actualizar</button>
+              <button id="btn-export-notes" class="btn btn-outline">📋 Copiar texto</button>
+              <button id="btn-print-pdf" class="btn btn-navy">🖨️ Guardar / Imprimir PDF</button>
+            </div>
+          </div>
+        </div>
+        <div id="pizarron-grid" class="pizarron-grid"></div>
+      </div>
     </section>
   </main>
 

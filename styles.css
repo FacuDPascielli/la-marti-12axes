@@ -2158,3 +2158,83 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==================================================
+   PIZARRÓN COLECTIVO & EXPORTAR PDF (@media print)
+   ================================================== */
+.pizarron-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.1rem;
+}
+
+.pizarron-eje-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: 14px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  break-inside: avoid;
+}
+
+.pizarron-eje-card h4 {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--ink);
+}
+
+.postit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.postit-card {
+  background: #fdfbf2;
+  border: 1px solid #e6dec0;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  font-size: 0.88rem;
+}
+
+.postit-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.postit-empty {
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .topbar,
+  .footer,
+  .section-intro,
+  .no-print,
+  #plan-ejes-view,
+  #hub-view {
+    display: none !important;
+  }
+  #tab-plan-12-ejes,
+  #plan-board-view {
+    display: block !important;
+  }
+  .main-content {
+    padding: 0 !important;
+  }
+  .card,
+  .pizarron-eje-card {
+    box-shadow: none !important;
+    border-color: #ccc !important;
+  }
+}

@@ -205,19 +205,6 @@
     btn.addEventListener('click', () => switchTab(btn.dataset.goto));
   });
 
-  // Paso 1 Forms notes wiring
-  const fnTop = document.getElementById('forms-note-top');
-  const fnSplit = document.getElementById('forms-note-split');
-  const fnMissing = document.getElementById('forms-note-missing');
-  if (fnTop && fnSplit && fnMissing) {
-    fnTop.value = state.formsNotes.top || '';
-    fnSplit.value = state.formsNotes.split || '';
-    fnMissing.value = state.formsNotes.missing || '';
-    fnTop.addEventListener('input', () => { state.formsNotes.top = fnTop.value; saveState(); });
-    fnSplit.addEventListener('input', () => { state.formsNotes.split = fnSplit.value; saveState(); });
-    fnMissing.addEventListener('input', () => { state.formsNotes.missing = fnMissing.value; saveState(); });
-  }
-
   updatePlenarioLockUI();
 
   // ==========================================
@@ -1039,8 +1026,101 @@
   });
 
   // ==========================================
-  // MODULE 4: 12 EJES PARA UN PLAN DE EDUCACIÓN HUMANA INTEGRAL
+  // MODULE 4: 12 EJES + PIZARRÓN COLECTIVO EN VIVO + PDF
   // ==========================================
+  let boardEntries = [];
+  const PIZARRON_URL = DATA.firebaseDbUrl ? `${DATA.firebaseDbUrl.replace(/\/+$/, '')}/lamarti_pizarron.json` : '';
+
+  function formatTime(ts) {
+    if (!ts) return '';
+    const d = new Date(ts);
+    return d.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderPizarron() {
+    const countEl = document.getElementById('board-count');
+    if (countEl) countEl.textContent = String(boardEntries.length);
+
+    const grid = document.getElementById('pizarron-grid');
+    if (!grid) return;
+
+    grid.innerHTML = DATA.plan12Ejes
+      .map((e) => {
+        const items = boardEntries.filter((b) => Number(b.ejeNum) === e.num);
+        return `
+          <div class="pizarron-eje-card">
+            <div class="eje-header">
+              <span class="eje-num">Eje ${e.num}</span>
+              <span class="eje-group-badge">${items.length} ${items.length === 1 ? 'aporte' : 'aportes'}</span>
+            </div>
+            <h4>${e.title}</h4>
+            <div class="postit-list">
+              ${
+                items.length
+                  ? items
+                      .map(
+                        (it) => `
+                        <div class="postit-card">
+                          <div class="postit-meta">
+                            <span>${it.group || 'Grupo'}</span>
+                            <span>${formatTime(it.createdAt)}</span>
+                          </div>
+                          <div>${it.text.replace(/</g, '&lt;').replace(/\n/g, '<br>')}</div>
+                        </div>
+                      `
+                      )
+                      .join('')
+                  : '<div class="postit-empty">Todavía sin aportes enviados en este eje.</div>'
+              }
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+
+  function fetchPizarron() {
+    if (!PIZARRON_URL) return;
+    fetch(`${PIZARRON_URL}?t=${Date.now()}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data) {
+          boardEntries = [];
+        } else {
+          boardEntries = Object.values(data).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+        }
+        renderPizarron();
+      })
+      .catch(() => {});
+  }
+
+  setInterval(() => {
+    if (state.activeTab === 'plan-12-ejes') {
+      fetchPizarron();
+    }
+  }, 3500);
+
+  document.querySelectorAll('#plan-mode-pills .filter-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#plan-mode-pills .filter-pill').forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const isBoard = pill.dataset.planMode === 'board';
+      document.getElementById('plan-ejes-view').classList.toggle('hidden', isBoard);
+      document.getElementById('plan-board-view').classList.toggle('hidden', !isBoard);
+      if (isBoard) fetchPizarron();
+    });
+  });
+
+  document.getElementById('btn-refresh-board')?.addEventListener('click', () => {
+    fetchPizarron();
+    showToast('Pizarrón actualizado');
+  });
+
+  document.getElementById('btn-print-pdf')?.addEventListener('click', () => {
+    fetchPizarron();
+    setTimeout(() => window.print(), 250);
+  });
+
   function render12Ejes() {
     const filtered =
       state.groupFilter === 'all'
@@ -1055,7 +1135,7 @@
           <article class="eje-card">
             <div class="eje-header">
               <span class="eje-num">Eje ${e.num}</span>
-              <span class="eje-group-badge">Grupo ${e.group}</span>
+              <span class="eje-group-badge">Bloque ${e.group}</span>
             </div>
             <h3>${e.title}</h3>
             <div class="eje-block">
@@ -1077,8 +1157,11 @@
               </ul>
             </div>
             <div>
-              <label style="font-size:0.78rem; font-weight:700; color:var(--muted);">Aportes del grupo (se guarda en este dispositivo):</label>
-              <textarea class="eje-notes" data-eje-num="${e.num}" placeholder="Escribí acá las conclusiones o propuestas de tu grupo...">${noteVal}</textarea>
+              <label style="font-size:0.78rem; font-weight:700; color:var(--muted);">Aporte de tu grupo:</label>
+              <textarea class="eje-notes" data-eje-num="${e.num}" placeholder="Escribí acá las propuestas o consignas de tu grupo...">${noteVal}</textarea>
+              <button class="btn btn-navy" data-send-eje="${e.num}" style="width:100%; margin-top:0.5rem;">
+                Enviar al Pizarrón Colectivo ↗
+              </button>
             </div>
           </article>
         `;
@@ -1091,6 +1174,50 @@
         saveState();
       });
     });
+
+    grid.querySelectorAll('[data-send-eje]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const ejeNum = Number(btn.dataset.sendEje);
+        const text = (state.groupNotes[ejeNum] || '').trim();
+        if (!text) {
+          showToast('Escribí primero el aporte de tu grupo');
+          return;
+        }
+        const group = document.getElementById('active-sender-group')?.value || 'Grupo';
+        const entry = { ejeNum, group, text, createdAt: Date.now() };
+
+        if (!PIZARRON_URL) {
+          boardEntries.push(entry);
+          renderPizarron();
+          showToast('Guardado en el Pizarrón local');
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+        fetch(PIZARRON_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        })
+          .then((r) => {
+            if (!r.ok) throw new Error('Error Firebase');
+            showToast(`¡Aporte de ${group} enviado al Pizarrón!`);
+            state.groupNotes[ejeNum] = '';
+            saveState();
+            const ta = grid.querySelector(`.eje-notes[data-eje-num="${ejeNum}"]`);
+            if (ta) ta.value = '';
+            fetchPizarron();
+          })
+          .catch(() => {
+            showToast('No se pudo enviar, revisá tu conexión');
+          })
+          .finally(() => {
+            btn.disabled = false;
+            btn.textContent = 'Enviar al Pizarrón Colectivo ↗';
+          });
+      });
+    });
   }
 
   document.getElementById('group-filter').addEventListener('change', (ev) => {
@@ -1099,35 +1226,30 @@
   });
 
   document.getElementById('btn-export-notes').addEventListener('click', () => {
-    const lines = ['# Relatoría · Formación 23/11 · Hacia un Plan de Educación Humana Integral (La Martí)'];
-    let hasNotes = false;
-
-    const fTop = (state.formsNotes.top || '').trim();
-    const fSplit = (state.formsNotes.split || '').trim();
-    const fMissing = (state.formsNotes.missing || '').trim();
-    if (fTop || fSplit || fMissing) {
-      hasNotes = true;
-      lines.push('\n## Síntesis del Relevamiento Inicial (Forms)');
-      if (fTop) lines.push(`- **Prioridad / eje principal:** ${fTop}`);
-      if (fSplit) lines.push(`- **Tema con más debate:** ${fSplit}`);
-      if (fMissing) lines.push(`- **Lo que faltó / sorprendió:** ${fMissing}`);
-    }
+    const lines = ['# Pizarrón Colectivo · Formación 23/11 · Plan de Educación Humana Integral (La Martí)'];
+    let hasItems = false;
 
     DATA.plan12Ejes.forEach((e) => {
-      const note = (state.groupNotes[e.num] || '').trim();
-      if (note) {
-        hasNotes = true;
-        lines.push(`\n## Eje ${e.num}: ${e.title} (Grupo ${e.group})\n${note}`);
+      const items = boardEntries.filter((b) => Number(b.ejeNum) === e.num);
+      if (items.length) {
+        hasItems = true;
+        lines.push(`\n## Eje ${e.num}: ${e.title}`);
+        items.forEach((it) => {
+          lines.push(`- **${it.group}**: ${it.text}`);
+        });
       }
     });
-    if (!hasNotes) {
-      showToast('Todavía no escribiste notas en ningún eje');
+
+    if (!hasItems) {
+      showToast('Todavía no hay aportes en el Pizarrón');
       return;
     }
     navigator.clipboard?.writeText(lines.join('\n')).then(() => {
-      showToast('Relatoría copiada al portapapeles');
+      showToast('Pizarrón copiado al portapapeles');
     });
   });
+
+  fetchPizarron();
 
   // ==========================================
   // PASO 2: JUEGO PRESENCIAL POR GRUPOS (PARTICIPANTE vs ORGANIZADOR)
