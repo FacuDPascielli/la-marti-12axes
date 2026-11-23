@@ -58,8 +58,14 @@
       .catch(() => {});
   }
 
+  const PLENARIO_UNLOCK_AT = new Date('2026-12-10T00:00:00-03:00').getTime();
+  function isPlenarioUnlocked() {
+    return Date.now() >= PLENARIO_UNLOCK_AT;
+  }
+
   const state = {
-    activeTab: 'axes',
+    section: 'hub', // 'hub' | 'formacion' | 'plenario'
+    activeTab: 'forms-relevamiento',
     quizIndex: 0,
     answers: new Array(DATA.questions.length).fill(null),
     quizCompleted: false,
@@ -68,7 +74,8 @@
     gameAnswered: false,
     eduFilter: 'all',
     groupFilter: 'all',
-    groupNotes: {}
+    groupNotes: {},
+    formsNotes: { top: '', split: '', missing: '' }
   };
 
   // Load saved state
@@ -80,6 +87,7 @@
       }
       state.quizCompleted = Boolean(saved.quizCompleted);
       state.groupNotes = saved.groupNotes || {};
+      state.formsNotes = saved.formsNotes || { top: '', split: '', missing: '' };
     }
   } catch (e) {
     console.warn('No se pudo cargar estado previo', e);
@@ -92,7 +100,8 @@
         JSON.stringify({
           answers: state.answers,
           quizCompleted: state.quizCompleted,
-          groupNotes: state.groupNotes
+          groupNotes: state.groupNotes,
+          formsNotes: state.formsNotes
         })
       );
     } catch (e) {
@@ -108,10 +117,71 @@
     el._timer = setTimeout(() => el.classList.add('hidden'), 2600);
   }
 
-  // NAVIGATION
+  // HUB & SUBPAGE NAVIGATION
+  function updatePlenarioLockUI() {
+    const unlocked = isPlenarioUnlocked();
+    const card = document.getElementById('hub-card-plenario');
+    const badge = document.getElementById('plenario-badge');
+    const title = document.getElementById('plenario-title');
+    const btn = document.getElementById('btn-enter-plenario');
+    if (!card || !badge || !title || !btn) return;
+
+    if (unlocked) {
+      card.classList.remove('hub-card-locked');
+      card.classList.add('hub-card-active');
+      badge.className = 'hub-badge active';
+      badge.textContent = 'Activa';
+      title.textContent = 'Plenario fin de año';
+      btn.className = 'btn btn-navy btn-lg';
+      btn.textContent = 'Entrar al Plenario →';
+    } else {
+      card.classList.add('hub-card-locked');
+      badge.className = 'hub-badge locked';
+      badge.textContent = '🔒 Próximamente';
+      title.textContent = 'Plenario fin de año (Próximamente)';
+      btn.className = 'btn btn-outline btn-lg';
+      btn.textContent = 'Próximamente';
+    }
+  }
+
+  function enterSection(section) {
+    if (section === 'plenario' && !isPlenarioUnlocked()) {
+      showToast('Disponible próximamente para el plenario de fin de año.');
+      return;
+    }
+    state.section = section;
+    const hubEl = document.getElementById('hub-view');
+    const navForm = document.getElementById('nav-formacion');
+    const navPlen = document.getElementById('nav-plenario');
+    const subEl = document.getElementById('topbar-sub');
+
+    if (section === 'hub') {
+      hubEl.classList.remove('hidden');
+      navForm.classList.add('hidden');
+      navPlen.classList.add('hidden');
+      document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+      if (subEl) subEl.textContent = 'Elegí la instancia de formación o plenario';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    hubEl.classList.add('hidden');
+    if (section === 'formacion') {
+      navForm.classList.remove('hidden');
+      navPlen.classList.add('hidden');
+      if (subEl) subEl.textContent = 'Formación 23/11 · Profesorados e Instituciones de Formación Docente';
+      switchTab('forms-relevamiento');
+    } else if (section === 'plenario') {
+      navForm.classList.add('hidden');
+      navPlen.classList.remove('hidden');
+      if (subEl) subEl.textContent = 'Plenario fin de año · Patria Grande & PDHI';
+      switchTab('axes');
+    }
+  }
+
   function switchTab(tabId) {
     state.activeTab = tabId;
-    document.querySelectorAll('.step-btn').forEach((btn) => {
+    document.querySelectorAll('.step-btn[data-tab]').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.tab === tabId);
     });
     document.querySelectorAll('.tab-panel').forEach((panel) => {
@@ -120,13 +190,35 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  document.querySelectorAll('.step-btn').forEach((btn) => {
+  document.getElementById('btn-enter-formacion')?.addEventListener('click', () => enterSection('formacion'));
+  document.getElementById('btn-enter-plenario')?.addEventListener('click', () => enterSection('plenario'));
+  document.getElementById('brand-home-btn')?.addEventListener('click', () => enterSection('hub'));
+  document.querySelectorAll('[data-back-hub]').forEach((btn) => {
+    btn.addEventListener('click', () => enterSection('hub'));
+  });
+
+  document.querySelectorAll('.step-btn[data-tab]').forEach((btn) => {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
 
   document.querySelectorAll('[data-goto]').forEach((btn) => {
     btn.addEventListener('click', () => switchTab(btn.dataset.goto));
   });
+
+  // Paso 1 Forms notes wiring
+  const fnTop = document.getElementById('forms-note-top');
+  const fnSplit = document.getElementById('forms-note-split');
+  const fnMissing = document.getElementById('forms-note-missing');
+  if (fnTop && fnSplit && fnMissing) {
+    fnTop.value = state.formsNotes.top || '';
+    fnSplit.value = state.formsNotes.split || '';
+    fnMissing.value = state.formsNotes.missing || '';
+    fnTop.addEventListener('input', () => { state.formsNotes.top = fnTop.value; saveState(); });
+    fnSplit.addEventListener('input', () => { state.formsNotes.split = fnSplit.value; saveState(); });
+    fnMissing.addEventListener('input', () => { state.formsNotes.missing = fnMissing.value; saveState(); });
+  }
+
+  updatePlenarioLockUI();
 
   // ==========================================
   // MODULE 1: 12 AXES PATRIA GRANDE
@@ -1007,8 +1099,20 @@
   });
 
   document.getElementById('btn-export-notes').addEventListener('click', () => {
-    const lines = ['# Relatoría · Hacia un Plan de Educación Humana Integral (La Martí)'];
+    const lines = ['# Relatoría · Formación 23/11 · Hacia un Plan de Educación Humana Integral (La Martí)'];
     let hasNotes = false;
+
+    const fTop = (state.formsNotes.top || '').trim();
+    const fSplit = (state.formsNotes.split || '').trim();
+    const fMissing = (state.formsNotes.missing || '').trim();
+    if (fTop || fSplit || fMissing) {
+      hasNotes = true;
+      lines.push('\n## Síntesis del Relevamiento Inicial (Forms)');
+      if (fTop) lines.push(`- **Prioridad / eje principal:** ${fTop}`);
+      if (fSplit) lines.push(`- **Tema con más debate:** ${fSplit}`);
+      if (fMissing) lines.push(`- **Lo que faltó / sorprendió:** ${fMissing}`);
+    }
+
     DATA.plan12Ejes.forEach((e) => {
       const note = (state.groupNotes[e.num] || '').trim();
       if (note) {

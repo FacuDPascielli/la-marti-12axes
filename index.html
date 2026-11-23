@@ -14,16 +14,32 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <span class="brand-logo">
+        <span class="brand-logo" id="brand-home-btn" style="cursor:pointer;" title="Volver al inicio">
           <img src="logo-lamarti.png" alt="La Martí" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
           <span style="display:none; font-family:'Space Grotesk',sans-serif; font-weight:800; font-size:0.85rem;">LM</span>
         </span>
         <div>
-          <h1>12 Axes · La Martí</h1>
-          <p class="brand-sub">Patria Grande · Del perfil militante al Plan de Educación Humana Integral</p>
+          <h1>La Martí · Patria Grande</h1>
+          <p class="brand-sub" id="topbar-sub">Elegí la instancia de formación o plenario</p>
         </div>
       </div>
-      <nav class="nav-steps" aria-label="Etapas de la formación">
+      <nav class="nav-steps hidden" id="nav-formacion" aria-label="Pasos de la Formación 23/11">
+        <button class="step-btn btn-back-hub" data-back-hub>← Inicio</button>
+        <button class="step-btn active" data-tab="forms-relevamiento">
+          <span class="step-num">1</span>
+          <span class="step-label">Relevamiento (QR)</span>
+        </button>
+        <button class="step-btn" data-tab="educacion-pg">
+          <span class="step-num">2</span>
+          <span class="step-label">Diagnóstico Educativo</span>
+        </button>
+        <button class="step-btn" data-tab="plan-12-ejes">
+          <span class="step-num">3</span>
+          <span class="step-label">12 Ejes Educación</span>
+        </button>
+      </nav>
+      <nav class="nav-steps hidden" id="nav-plenario" aria-label="Etapas del Plenario">
+        <button class="step-btn btn-back-hub" data-back-hub>← Inicio</button>
         <button class="step-btn active" data-tab="axes">
           <span class="step-num">1</span>
           <span class="step-label">12 Axes</span>
@@ -32,21 +48,148 @@
           <span class="step-num">2</span>
           <span class="step-label">Desafío PDHI</span>
         </button>
-        <button class="step-btn" data-tab="educacion-pg">
-          <span class="step-num">3</span>
-          <span class="step-label">Diagnóstico Educativo</span>
-        </button>
-        <button class="step-btn" data-tab="plan-12-ejes">
-          <span class="step-num">4</span>
-          <span class="step-label">12 Ejes Educación</span>
-        </button>
       </nav>
     </div>
   </header>
 
   <main class="container main-content">
+    <!-- PORTADA / SELECTOR DE INSTANCIA -->
+    <section id="hub-view">
+      <div class="hub-hero">
+        <div class="eyebrow">• LA MARTÍ · CORRIENTE DE DOCENTES EN FORMACIÓN · PATRIA GRANDE</div>
+        <h2 class="display-title">Espacio de Formación<br><span class="accent-ochre">y Debate Programático</span></h2>
+        <p class="lead-text">
+          Seleccioná la instancia en la que estás participando para acceder a los materiales, relevamientos y dinámicas grupales.
+        </p>
+      </div>
+
+      <div class="hub-cards-grid">
+        <article class="card hub-card hub-card-active">
+          <div class="hub-card-top">
+            <span class="hub-badge active">Activa · Hoy</span>
+            <span class="hub-icon">📚</span>
+          </div>
+          <h3>Formación 23/11</h3>
+          <p>
+            Actividad en grupos para profesorados: relevamiento inicial por QR, lectura conjunta de datos,
+            diagnóstico educativo (PDHI &amp; CABA) y debate sobre los <strong>12 Ejes para un Plan de Educación Humana Integral</strong>.
+          </p>
+          <ul class="hub-steps-preview">
+            <li><strong>Paso 1:</strong> Relevamiento inicial (Google Forms + lectura en vivo)</li>
+            <li><strong>Paso 2:</strong> Diagnóstico educativo y propuestas FDHI</li>
+            <li><strong>Paso 3:</strong> Trabajo en grupos sobre los 12 Ejes</li>
+          </ul>
+          <button id="btn-enter-formacion" class="btn btn-navy btn-lg" style="width:100%;">Entrar a Formación 23/11 →</button>
+        </article>
+
+        <article class="card hub-card" id="hub-card-plenario">
+          <div class="hub-card-top">
+            <span class="hub-badge locked" id="plenario-badge">🔒 Próximamente</span>
+            <span class="hub-icon">🧭</span>
+          </div>
+          <h3 id="plenario-title">Plenario fin de año (Próximamente)</h3>
+          <p>
+            Instancia general de cierre de año sobre Patria Grande y el Plan de Desarrollo Humano Integral:
+            brújula política <strong>12 Axes</strong> y el juego <strong>Desafío PDHI</strong>.
+          </p>
+          <ul class="hub-steps-preview">
+            <li><strong>Etapa 1:</strong> 12 Axes · Brújula interna de Patria Grande</li>
+            <li><strong>Etapa 2:</strong> Desafío PDHI · Los 12 ejes del proyecto nacional</li>
+          </ul>
+          <button id="btn-enter-plenario" class="btn btn-outline btn-lg" style="width:100%;">Próximamente</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAB 0 (FORMACIÓN PASO 1): RELEVAMIENTO QR + PUENTE METODOLÓGICO -->
+    <section id="tab-forms-relevamiento" class="tab-panel">
+      <div class="card">
+        <div class="eyebrow">• PASO 1 DE LA FORMACIÓN 23/11 · RELEVAMIENTO INICIAL EN GRUPOS</div>
+        <h2>Respondé el relevamiento inicial</h2>
+        <p class="section-desc">
+          Como ya estamos divididos en grupos desde el arranque, cada compa responde el formulario desde su celular.
+          Luego proyectamos las estadísticas generales para conectarlas con el Diagnóstico (Paso 2) y los 12 Ejes (Paso 3).
+        </p>
+
+        <div class="qr-split-layout">
+          <div class="qr-box">
+            <img src="qr-forms.png" alt="QR del Formulario de Formación La Martí" class="qr-img" />
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSez6oDD1Asxq8sdz5-L4DkDSWLiFQQ5ijAJIh3RlVJAj7wv9A/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-navy"
+              style="width:100%; text-decoration:none;"
+            >
+              Abrir Formulario en el celular ↗
+            </a>
+            <span class="qr-hint">Escaneá con la cámara o tocá el botón</span>
+          </div>
+
+          <div class="bridge-guide">
+            <h3>¿Cómo conectamos las respuestas con la formación?</h3>
+            <div class="bridge-steps">
+              <div class="bridge-step">
+                <span class="bridge-num">A</span>
+                <div>
+                  <strong>Responder en grupos (10 min)</strong>
+                  <p>Cada integrante completa el Forms mientras van rompiendo el hielo en su grupo.</p>
+                </div>
+              </div>
+              <div class="bridge-step">
+                <span class="bridge-num">B</span>
+                <div>
+                  <strong>Lectura en vivo de estadísticas (15 min)</strong>
+                  <p>Proyectamos la pestaña <em>Respuestas</em> del Forms y miramos los gráficos generales con 3 preguntas puente:</p>
+                  <ul>
+                    <li>¿Qué problemáticas o ejes salieron como más urgentes? <em>(Contrastar en el Paso 2 con los datos duros del PDHI/CABA)</em>.</li>
+                    <li>¿En qué pregunta estuvimos más divididos? <em>(Ahí está el nudo político para discutir)</em>.</li>
+                    <li>¿Qué tema importante quedó afuera o poco votado? <em>(Para chequearlo contra los 12 Ejes)</em>.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bridge-step">
+                <span class="bridge-num">C</span>
+                <div>
+                  <strong>Pasar al Diagnóstico y los 12 Ejes (40 min)</strong>
+                  <p>Con esa foto colectiva, cada grupo cruza lo que salió en el Forms con los datos del Paso 2 y redacta sus aportes en el Paso 3.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">• REGISTRO RÁPIDO DEL PLENARIO DE RESPUESTAS (OPCIONAL)</div>
+        <h3>Anotá qué salió en los gráficos del Forms para llevarlo a tu grupo</h3>
+        <p class="section-desc">Se guarda en este dispositivo y se suma automáticamente si exportás la relatoría en el Paso 3.</p>
+        <div class="forms-notes-grid">
+          <div>
+            <label class="field-label" for="forms-note-top">1. Prioridad / eje que más salió en el Forms:</label>
+            <textarea id="forms-note-top" class="eje-notes" placeholder="Ej: Preocupación por salarios, deserción en 1° año del profesorado..."></textarea>
+          </div>
+          <div>
+            <label class="field-label" for="forms-note-split">2. Tema donde hubo más debate o división:</label>
+            <textarea id="forms-note-split" class="eje-notes" placeholder="Ej: Rol de la virtualidad/IA o relación con UdelaCiudad..."></textarea>
+          </div>
+          <div>
+            <label class="field-label" for="forms-note-missing">3. Algo que faltó o nos sorprendió de los gráficos:</label>
+            <textarea id="forms-note-missing" class="eje-notes" placeholder="Ej: Apareció fuerte el tema salud mental y escuelas desbordadas..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-step-banner card">
+        <div>
+          <strong>¿Ya miraron las estadísticas del Forms?</strong>
+          <p>Pasemos al Diagnóstico Educativo para contrastar lo que salió con los datos duros del PDHI y CABA.</p>
+        </div>
+        <button class="btn btn-navy" data-goto="educacion-pg">Ir a Paso 2: Diagnóstico Educativo →</button>
+      </div>
+    </section>
     <!-- TAB 1: 12 AXES PATRIA GRANDE -->
-    <section id="tab-axes" class="tab-panel active">
+    <section id="tab-axes" class="tab-panel">
       <div id="axes-intro">
         <div class="axes-hero-split">
           <div class="axes-hero-copy">
@@ -272,7 +415,7 @@
           <div id="game-unlocked-axes" class="unlocked-grid"></div>
           <div class="hero-actions" style="margin-top: 1.5rem;">
             <button id="btn-game-replay" class="btn btn-outline">Jugar de nuevo</button>
-            <button class="btn btn-navy" data-goto="educacion-pg">Ir a Etapa 3: Diagnóstico Educativo →</button>
+            <button class="btn btn-navy" data-goto="axes">Volver a 12 Axes →</button>
           </div>
         </div>
       </div>
@@ -285,7 +428,7 @@
     <!-- TAB 3: EDUCACIÓN SEGÚN PATRIA GRANDE / FDHI -->
     <section id="tab-educacion-pg" class="tab-panel">
       <div class="card section-intro">
-        <span class="hero-tag">Etapa 3 · Síntesis de los documentos de la Fundación DHI</span>
+        <span class="hero-tag">Paso 2 · Diagnóstico de la Fundación DHI (Nacional y CABA)</span>
         <h2>La Educación que plantea el PDHI</h2>
         <p>
           Datos y propuestas extraídos de <em>Política educativa: fortalecer la escuela para reducir desigualdades</em>
@@ -313,7 +456,7 @@
           <strong>Ahora nos toca a nosotros como docentes en formación</strong>
           <p>Pasemos a debatir en grupos los 12 Ejes propuestos para construir un Plan de Educación Humana Integral.</p>
         </div>
-        <button class="btn btn-primary" data-goto="plan-12-ejes">Ir a Etapa 4: 12 Ejes de Educación →</button>
+        <button class="btn btn-primary" data-goto="plan-12-ejes">Ir a Paso 3: 12 Ejes de Educación →</button>
       </div>
     </section>
 
@@ -322,7 +465,7 @@
       <div class="card section-intro">
         <div class="section-head-row">
           <div>
-            <span class="hero-tag">Etapa 4 · Trabajo en grupos para la reunión de La Martí</span>
+            <span class="hero-tag">Paso 3 · Trabajo en grupos para la Formación 23/11</span>
             <h2>Propuesta: 12 Ejes para un Plan de Educación Humana Integral</h2>
             <p>
               Cada eje incluye su <strong>justificación político-ideológica</strong> (para qué y para quiénes educamos),
