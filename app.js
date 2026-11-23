@@ -1157,19 +1157,58 @@
   if (liveChannel) {
     liveChannel.onmessage = (ev) => {
       if (ev.data && ev.data.type === 'sync') {
-        teams = ev.data.teams;
-        physRoundIdx = ev.data.physRoundIdx;
-        physRevealed = ev.data.physRevealed;
-        renderScoreboard();
-        renderPhysicalRound();
+        applyRemoteGameState(ev.data);
       }
     };
   }
 
+  const DB_URL = (DATA.firebaseDbUrl || '').replace(/\/+$/, '');
+  let pollTimer = null;
+
+  function applyRemoteGameState(payload) {
+    if (!payload) return;
+    if (Array.isArray(payload.teams) && payload.teams.length === 4) teams = payload.teams;
+    if (typeof payload.physRoundIdx === 'number') physRoundIdx = payload.physRoundIdx;
+    physRevealed = Boolean(payload.physRevealed);
+    renderScoreboard();
+    renderPhysicalRound();
+  }
+
   function saveGameSync() {
-    const payload = { teams, physRoundIdx, physRevealed };
+    const payload = { teams, physRoundIdx, physRevealed, updatedAt: Date.now() };
     try { localStorage.setItem(TEAMS_KEY, JSON.stringify(payload)); } catch (e) {}
     if (liveChannel) liveChannel.postMessage({ type: 'sync', ...payload });
+
+    if (DB_URL && userRole === 'organizer') {
+      fetch(`${DB_URL}/lamarti_game.json`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch((err) => console.warn('Error guardando en Firebase:', err));
+    }
+  }
+
+  function fetchRemoteGameState() {
+    if (!DB_URL) return;
+    fetch(`${DB_URL}/lamarti_game.json?t=${Date.now()}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data) {
+          applyRemoteGameState(data);
+        }
+      })
+      .catch(() => {});
+  }
+
+  function startParticipantPolling() {
+    if (!DB_URL) return;
+    fetchRemoteGameState();
+    clearInterval(pollTimer);
+    pollTimer = setInterval(() => {
+      if (state.activeTab === 'juego-grupos' && userRole === 'participant') {
+        fetchRemoteGameState();
+      }
+    }, 2000);
   }
 
   function enterGameRole(role) {
@@ -1178,10 +1217,17 @@
     document.getElementById('game-arena')?.classList.remove('hidden');
 
     const isOrg = role === 'organizer';
-    document.getElementById('role-status-badge').textContent = isOrg ? '🎛️ Modo Organizador' : '👁️ Modo Participante';
+    const dbTag = DB_URL ? ' · 🟢 En vivo' : ' · 🟡 Local';
+    document.getElementById('role-status-badge').textContent = (isOrg ? '🎛️ Modo Organizador' : '👁️ Modo Participante') + dbTag;
     document.querySelectorAll('.org-only').forEach((el) => el.classList.toggle('hidden', !isOrg));
     renderScoreboard();
     renderPhysicalRound();
+
+    if (isOrg && DB_URL) {
+      fetchRemoteGameState();
+    } else if (!isOrg) {
+      startParticipantPolling();
+    }
   }
 
   document.getElementById('btn-choose-participant')?.addEventListener('click', () => {

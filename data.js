@@ -1,6 +1,9 @@
 // Datos de la app: La Martí · Patria Grande · PDHI
 
 window.APP_DATA = {
+  // Pegar acá la URL de Firebase Realtime Database (ej: 'https://mi-proyecto-default-rtdb.firebaseio.com')
+  firebaseDbUrl: '',
+
   // 6 pares de ejes = 12 polos internos dentro del campo nacional, popular y humanista
   axes: [
     {
