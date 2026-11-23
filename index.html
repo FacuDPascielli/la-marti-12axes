@@ -29,12 +29,16 @@
           <span class="step-num">1</span>
           <span class="step-label">Relevamiento (QR)</span>
         </button>
-        <button class="step-btn" data-tab="educacion-pg">
+        <button class="step-btn" data-tab="juego-grupos">
           <span class="step-num">2</span>
-          <span class="step-label">Diagnóstico Educativo</span>
+          <span class="step-label">Juego Grupos</span>
+        </button>
+        <button class="step-btn" data-tab="educacion-pg">
+          <span class="step-num">3</span>
+          <span class="step-label">Diagnóstico</span>
         </button>
         <button class="step-btn" data-tab="plan-12-ejes">
-          <span class="step-num">3</span>
+          <span class="step-num">4</span>
           <span class="step-label">12 Ejes Educación</span>
         </button>
       </nav>
@@ -75,9 +79,10 @@
             diagnóstico educativo (PDHI &amp; CABA) y debate sobre los <strong>12 Ejes para un Plan de Educación Humana Integral</strong>.
           </p>
           <ul class="hub-steps-preview">
-            <li><strong>Paso 1:</strong> Relevamiento inicial (Google Forms + lectura en vivo)</li>
-            <li><strong>Paso 2:</strong> Diagnóstico educativo y propuestas FDHI</li>
-            <li><strong>Paso 3:</strong> Trabajo en grupos sobre los 12 Ejes</li>
+            <li><strong>Paso 1:</strong> Relevamiento inicial todos juntos (Google Forms)</li>
+            <li><strong>Paso 2:</strong> Juego por grupos (Prode del Forms + Trivia de datos)</li>
+            <li><strong>Paso 3:</strong> Diagnóstico educativo: qué faltó y datos DHI</li>
+            <li><strong>Paso 4:</strong> Trabajo en grupos sobre los 12 Ejes elegidos</li>
           </ul>
           <button id="btn-enter-formacion" class="btn btn-navy btn-lg" style="width:100%;">Entrar a Formación 23/11 →</button>
         </article>
@@ -139,22 +144,17 @@
               <div class="bridge-step">
                 <span class="bridge-num">2</span>
                 <div>
-                  <strong>Plenario flash: "Lectura de nuestra foto" (15 min)</strong>
-                  <p>Proyectamos la pestaña <em>Respuestas</em> del Forms y debatimos entre todos con 3 disparadores:</p>
-                  <ul>
-                    <li><strong>El consenso fácil:</strong> ¿En qué estuvimos casi todos de acuerdo? ¿Alcanza con eso o hay que profundizarlo?</li>
-                    <li><strong>La grieta interna / sorpresa:</strong> ¿En qué pregunta se partieron las respuestas? <em>(Dos compas con posturas distintas explican en 1 min por qué votaron así)</em>.</li>
-                    <li><strong>El punto ciego:</strong> Mirando el Diagnóstico (Paso 2), ¿qué problema grave de las escuelas/profesorados ni apareció en nuestras respuestas?</li>
-                  </ul>
+                  <strong>División en grupos + Juego de Estadísticas (20 min)</strong>
+                  <p>Nos dividimos en 4 grupos y pasamos al <strong>Paso 2 (Juego)</strong>: antes de mostrar los gráficos del Forms, cada grupo apuesta qué salió y responde la trivia de datos reales. <strong>¡El ranking define quién elige primero los ejes!</strong></p>
                 </div>
               </div>
               <div class="bridge-step">
                 <span class="bridge-num">3</span>
                 <div>
-                  <strong>División en grupos con mandato claro (40 min)</strong>
+                  <strong>Ver qué faltó y trabajar los 12 Ejes (40 min)</strong>
                   <p>
-                    Nos dividimos en los <strong>4 grupos del Paso 3</strong>. Cada grupo se lleva lo que salió en el Forms + los datos del Paso 2
-                    para armar un <strong>insumo concreto</strong>: <em>1 diagnóstico corto + 2 propuestas concretas + 1 bandera/consigna</em> sobre sus 3 ejes.
+                    Contrastamos lo que salió en el Forms con el <strong>Paso 3 (Diagnóstico)</strong> para ver qué problemáticas quedaron afuera,
+                    y cada grupo trabaja los ejes que eligió en el <strong>Paso 4</strong> para armar su insumo.
                   </p>
                 </div>
               </div>
@@ -185,10 +185,78 @@
 
       <div class="next-step-banner card">
         <div>
-          <strong>¿Ya miraron las estadísticas del Forms?</strong>
-          <p>Pasemos al Diagnóstico Educativo para contrastar lo que salió con los datos duros del PDHI y CABA.</p>
+          <strong>¿Ya respondieron todos el Forms?</strong>
+          <p>Dividanse en 4 grupos y pasen al juego de estadísticas para definir el orden de elección de ejes.</p>
         </div>
-        <button class="btn btn-navy" data-goto="educacion-pg">Ir a Paso 2: Diagnóstico Educativo →</button>
+        <button class="btn btn-navy" data-goto="juego-grupos">Ir a Paso 2: Juego por Grupos →</button>
+      </div>
+    </section>
+
+    <!-- TAB: PASO 2 JUEGO DE COMPETENCIA ENTRE GRUPOS -->
+    <section id="tab-juego-grupos" class="tab-panel">
+      <div class="card">
+        <div class="section-head-row">
+          <div>
+            <div class="eyebrow">• PASO 2 · COMPETENCIA ENTRE GRUPOS PARA ELEGIR EJES</div>
+            <h2>Prode del Forms &amp; Trivia de Datos Educativos</h2>
+            <p class="section-desc" style="margin-bottom:0;">
+              El grupo que sume más puntos elige primero qué bloque de ejes quiere trabajar en el Paso 4.
+            </p>
+          </div>
+          <button id="btn-reset-scoreboard" class="btn btn-outline">Reiniciar marcador</button>
+        </div>
+        <div id="team-scoreboard" class="scoreboard-grid"></div>
+      </div>
+
+      <div class="game-two-col">
+        <div class="card">
+          <div class="eyebrow">• RONDA A · PRODE DEL FORMS (EN VIVO)</div>
+          <h3>Adiviná qué votó la reunión</h3>
+          <p class="section-desc">
+            Antes de mostrar cada gráfico en la pestaña <em>Respuestas</em> de Google Forms, cada grupo tira su pronóstico. El que más se acerque suma puntos en el marcador de arriba.
+          </p>
+          <div class="prode-list">
+            <div class="prode-item">
+              <strong>1. La prioridad #1 de la sala</strong>
+              <span>¿Qué problemática o eje creen que salió más votado en el Forms? (+10 pts al que acierte)</span>
+            </div>
+            <div class="prode-item">
+              <strong>2. Termómetro de consenso</strong>
+              <span>¿Con qué porcentaje exacto ganó la opción más elegida en la pregunta clave? (+10 pts al más cercano)</span>
+            </div>
+            <div class="prode-item">
+              <strong>3. El mayor empate / grieta</strong>
+              <span>¿En qué pregunta del Forms hubo más división entre compas? (+10 pts al que le pegue)</span>
+            </div>
+            <div class="prode-item">
+              <strong>4. El gran ausente</strong>
+              <span>¿Qué tema importante casi nadie marcó, pero sí aparece fuerte en los datos reales? (+10 pts)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="eyebrow">• RONDA B · TRIVIA DE ESTADÍSTICAS REALES</div>
+          <div class="quiz-top-meta">
+            <span id="trivia-progress">Pregunta 1 de 6</span>
+            <span id="trivia-tag" style="color:var(--primary); font-weight:800;"></span>
+          </div>
+          <h3 id="trivia-question" style="margin-top:0.35rem;"></h3>
+          <div id="trivia-options" class="game-options" style="margin-top:0.85rem;"></div>
+          <div id="trivia-feedback" class="game-feedback hidden"></div>
+          <div class="quiz-footer">
+            <button id="btn-trivia-prev" class="btn btn-outline">← Anterior</button>
+            <button id="btn-trivia-next" class="btn btn-navy">Siguiente dato →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-step-banner card">
+        <div>
+          <strong>¿Ya tenemos el podio de grupos?</strong>
+          <p>Pasemos al Diagnóstico Educativo para ver el panorama completo y qué temas faltaron en el Forms.</p>
+        </div>
+        <button class="btn btn-navy" data-goto="educacion-pg">Ir a Paso 3: Diagnóstico Educativo →</button>
       </div>
     </section>
     <!-- TAB 1: 12 AXES PATRIA GRANDE -->
@@ -431,7 +499,7 @@
     <!-- TAB 3: EDUCACIÓN SEGÚN PATRIA GRANDE / FDHI -->
     <section id="tab-educacion-pg" class="tab-panel">
       <div class="card section-intro">
-        <span class="hero-tag">Paso 2 · Diagnóstico de la Fundación DHI (Nacional y CABA)</span>
+        <span class="hero-tag">Paso 3 · Diagnóstico de la Fundación DHI (Nacional y CABA)</span>
         <h2>La Educación que plantea el PDHI</h2>
         <p>
           Datos y propuestas extraídos de <em>Política educativa: fortalecer la escuela para reducir desigualdades</em>
@@ -459,7 +527,7 @@
           <strong>Ahora nos toca a nosotros como docentes en formación</strong>
           <p>Pasemos a debatir en grupos los 12 Ejes propuestos para construir un Plan de Educación Humana Integral.</p>
         </div>
-        <button class="btn btn-primary" data-goto="plan-12-ejes">Ir a Paso 3: 12 Ejes de Educación →</button>
+        <button class="btn btn-primary" data-goto="plan-12-ejes">Ir a Paso 4: 12 Ejes de Educación →</button>
       </div>
     </section>
 
@@ -468,7 +536,7 @@
       <div class="card section-intro">
         <div class="section-head-row">
           <div>
-            <span class="hero-tag">Paso 3 · Trabajo en grupos para la Formación 23/11</span>
+            <span class="hero-tag">Paso 4 · Trabajo en grupos para la Formación 23/11</span>
             <h2>Propuesta: 12 Ejes para un Plan de Educación Humana Integral</h2>
             <p>
               Cada eje incluye su <strong>justificación político-ideológica</strong> (para qué y para quiénes educamos),

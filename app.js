@@ -1129,7 +1129,121 @@
     });
   });
 
+  // ==========================================
+  // PASO 2: JUEGO ENTRE GRUPOS (MARCADOR + TRIVIA)
+  // ==========================================
+  const TEAMS_KEY = 'lamarti_teams_v1';
+  let teams = [
+    { name: 'Grupo 1', score: 0 },
+    { name: 'Grupo 2', score: 0 },
+    { name: 'Grupo 3', score: 0 },
+    { name: 'Grupo 4', score: 0 }
+  ];
+  try {
+    const savedTeams = JSON.parse(localStorage.getItem(TEAMS_KEY) || 'null');
+    if (Array.isArray(savedTeams) && savedTeams.length === 4) teams = savedTeams;
+  } catch (e) {}
+
+  function saveTeams() {
+    try { localStorage.setItem(TEAMS_KEY, JSON.stringify(teams)); } catch (e) {}
+  }
+
+  function renderScoreboard() {
+    const el = document.getElementById('team-scoreboard');
+    if (!el) return;
+    const sortedScores = [...new Set(teams.map((t) => t.score))].sort((a, b) => b - a);
+    const maxScore = sortedScores[0];
+
+    el.innerHTML = teams
+      .map((t, idx) => {
+        const rank = sortedScores.indexOf(t.score) + 1;
+        const isLeader = t.score > 0 && t.score === maxScore;
+        return `
+          <div class="team-card ${isLeader ? 'leader' : ''}">
+            <div class="team-top">
+              <input class="team-name-input" type="text" value="${t.name}" data-team-name="${idx}" aria-label="Nombre del grupo ${idx + 1}" />
+              <span class="team-rank">${rank}°</span>
+            </div>
+            <div class="team-score">${t.score} pts</div>
+            <div class="team-btns">
+              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="10">+10</button>
+              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="5">+5</button>
+              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="-5">-5</button>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+
+    el.querySelectorAll('[data-team-name]').forEach((inp) => {
+      inp.addEventListener('change', () => {
+        teams[Number(inp.dataset.teamName)].name = inp.value.trim() || `Grupo ${Number(inp.dataset.teamName) + 1}`;
+        saveTeams();
+      });
+    });
+
+    el.querySelectorAll('[data-team-idx]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = Number(btn.dataset.teamIdx);
+        const delta = Number(btn.dataset.delta);
+        teams[idx].score = Math.max(0, teams[idx].score + delta);
+        saveTeams();
+        renderScoreboard();
+      });
+    });
+  }
+
+  document.getElementById('btn-reset-scoreboard')?.addEventListener('click', () => {
+    teams.forEach((t) => { t.score = 0; });
+    saveTeams();
+    renderScoreboard();
+  });
+
+  let triviaIdx = 0;
+  function renderTrivia() {
+    if (!DATA.eduTrivia || !document.getElementById('trivia-question')) return;
+    const item = DATA.eduTrivia[triviaIdx];
+    const total = DATA.eduTrivia.length;
+    document.getElementById('trivia-progress').textContent = `Pregunta ${triviaIdx + 1} de ${total}`;
+    document.getElementById('trivia-tag').textContent = item.tag;
+    document.getElementById('trivia-question').textContent = item.question;
+    document.getElementById('btn-trivia-prev').disabled = triviaIdx === 0;
+    document.getElementById('btn-trivia-next').disabled = triviaIdx === total - 1;
+
+    const fb = document.getElementById('trivia-feedback');
+    fb.classList.add('hidden');
+    fb.innerHTML = '';
+
+    const optsEl = document.getElementById('trivia-options');
+    optsEl.innerHTML = item.options
+      .map((opt, i) => `<button class="game-opt-btn" data-triv-idx="${i}">${opt}</button>`)
+      .join('');
+
+    optsEl.querySelectorAll('.game-opt-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const chosen = Number(btn.dataset.trivIdx);
+        const ok = chosen === item.correctIdx;
+        optsEl.querySelectorAll('.game-opt-btn').forEach((b, i) => {
+          b.disabled = true;
+          if (i === item.correctIdx) b.classList.add('correct');
+          else if (i === chosen) b.classList.add('wrong');
+        });
+        fb.innerHTML = `<strong>${ok ? '¡Correcto!' : 'Dato clave:'}</strong> ${item.explain}`;
+        fb.classList.remove('hidden');
+      });
+    });
+  }
+
+  document.getElementById('btn-trivia-prev')?.addEventListener('click', () => {
+    if (triviaIdx > 0) { triviaIdx--; renderTrivia(); }
+  });
+  document.getElementById('btn-trivia-next')?.addEventListener('click', () => {
+    if (triviaIdx < DATA.eduTrivia.length - 1) { triviaIdx++; renderTrivia(); }
+  });
+
   // INIT
+  renderScoreboard();
+  renderTrivia();
   renderGameScenario();
   renderEduModule();
   render12Ejes();

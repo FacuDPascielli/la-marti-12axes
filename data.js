@@ -981,6 +981,52 @@ window.APP_DATA = {
     }
   ],
 
+  // 6 preguntas rápidas de estadísticas educativas para competir entre grupos (Paso 2)
+  eduTrivia: [
+    {
+      tag: 'Presupuesto Nacional',
+      question: '¿Cuánto cayó en términos reales el presupuesto educativo nacional entre 2023 y 2026?',
+      options: ['19%', '32%', '49%'],
+      correctIdx: 2,
+      explain: 'Cayó un 49% real, con recortes de más del 70% en infraestructura y del 75% en becas Progresar (Perspectivas estratégicas, p. 419).'
+    },
+    {
+      tag: 'Formación Docente CABA',
+      question: 'En CABA hay más institutos privados (34) que estatales (28), pero ¿qué porcentaje de la matrícula docente estudia en el Estado?',
+      options: ['Alrededor del 45%', 'Más del 74% (24.509 vs 8.380)', 'Cerca del 30%'],
+      correctIdx: 1,
+      explain: 'En 2024 hubo 24.509 estudiantes en profesorados estatales frente a 8.380 en privados: el sistema público sostiene el núcleo formativo (FDHI CABA, p. 47).'
+    },
+    {
+      tag: 'Desigualdad Social y Escuela',
+      question: 'Según la EPH-INDEC (2do sem. 2025), ¿qué porcentaje de chicos en edad de escolarización obligatoria vive bajo la línea de pobreza?',
+      options: ['Más del 40%', 'Alrededor del 22%', 'Cerca del 15%'],
+      correctIdx: 0,
+      explain: 'Más del 40% de niños, niñas y adolescentes en edad escolar está bajo la línea de pobreza, lo que explica el fenómeno de "escuelas desbordadas" (p. 417).'
+    },
+    {
+      tag: 'Brecha Digital',
+      question: 'Según el Informe Nacional de Indicadores Educativos, ¿qué porcentaje de las escuelas del país cuenta con conectividad en las aulas?',
+      options: ['El 85%', 'El 60%', 'Apenas el 33%'],
+      correctIdx: 2,
+      explain: 'Solo el 68% de las escuelas tiene internet y apenas el 33% llega con conectividad a las aulas; además, el 45% de los estudiantes no tiene computadora en su casa (p. 417).'
+    },
+    {
+      tag: 'Desigualdad en Aprendizajes',
+      question: 'En Aprender 2024 (Matemática), el 54,6% quedó por debajo del nivel básico. ¿A cuánto sube esa cifra en el quintil de menores ingresos?',
+      options: ['Al 58%', 'Al 70%', 'Al 45%'],
+      correctIdx: 1,
+      explain: 'Sube al 70% en el quintil más pobre: la desigualdad social impacta de lleno en la desigualdad educativa (p. 418).'
+    },
+    {
+      tag: 'Presupuesto CABA',
+      question: '¿Cómo evolucionó el peso de la inversión educativa sobre el presupuesto total de CABA entre 2015 y 2026?',
+      options: ['Subió del 20% al 25%', 'Se mantuvo estable en 23%', 'Bajó del 23% al 19%'],
+      correctIdx: 2,
+      explain: 'Cayó del 23% en 2015 al 19% en 2023, subió levemente al 20% en 2024 y se proyecta otra baja al 19% en 2026 (FDHI CABA, p. 4).'
+    }
+  ],
+
   // Datos de diagnóstico educativo (de ambos PDFs)
   eduStats: [
     {
