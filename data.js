@@ -1147,11 +1147,11 @@ window.APP_DATA = {
       num: 2,
       group: 1,
       title: 'Trabajo Docente Jerarquizado y Carrera Colectiva',
-      description: 'Recomposición salarial, horas pagas para planificación institucional en equipo, estabilidad laboral y creación de nuevos roles pedagógicos.',
-      justification: 'El docente es un trabajador intelectual y cultural, no un "apostol" precarizado ni un mero aplicador de recetas técnicas.',
+      description: 'Recomposición salarial, horas pagas para planificación institucional en equipo, estabilidad laboral y creación de nuevos roles pedagógicos y administrativos.',
+      justification: 'El docente es un trabajador intelectual y cultural, no un "apóstol" precarizado ni un mero aplicador de recetas técnicas.',
       problem: 'Sobrecarga laboral, pluriempleo ("docentes taxi"), problemas en licencias médicas y desgaste en escuelas desbordadas.',
       prompts: [
-        '¿Qué implica pensar el trabajo docente dentro de un proyecto de Desarrollo Humano Integral?',
+        '¿Qué implica pensar el trabajo docente dentro de un proyecto de Desarrollo Humano Integral (crecimiento en todas las dimensiones de la vida, no solo lo económico)?',
         '¿Cómo evitar que las reformas trasladen más tareas sin tiempo pago ni recursos?'
       ]
     },
@@ -1161,34 +1161,34 @@ window.APP_DATA = {
       title: 'Baja Natalidad como Oportunidad Pedagógica',
       description: 'Prohibición de cierre de salas, grados o cargos ante la baja demográfica; reconversión hacia parejas pedagógicas y grupos reducidos.',
       justification: 'La educación no se rige por criterios de rentabilidad o "eficiencia" de mercado: menos pibes por aula significa mejor enseñanza y cuidado.',
-      problem: 'Políticas de ajuste (como en CABA y otras jurisdicciones) que usan la baja natalidad como excusa para cerrar cursos y fusionar escuelas.',
+      problem: 'Políticas de ajuste (como en CABA y otras jurisdicciones) que usan la baja natalidad como excusa para recortar cursos y fusionar escuelas, mientras familias buscan jardines gratuitos en distritos vecinos (ej. Avellaneda).',
       prompts: [
-        '¿Qué argumentos políticos y pedagógicos podemos llevar a las escuelas y familias frente al cierre de grados?',
-        '¿Cómo potenciar las parejas pedagógicas en el primer ciclo?'
+        '¿Qué argumentos político-pedagógicos podemos llevar a las escuelas y familias frente al cierre de grados?',
+        '¿Cómo potenciar las parejas pedagógicas en el primer ciclo en este contexto de baja matrícula?'
       ]
     },
     {
       num: 4,
       group: 2,
       title: 'Defensa y Articulación del Sistema Formador (ISFD/ENS/IES)',
-      description: 'Planificación federal de la formación docente que jerarquice a los institutos históricos, impida el cierre de carreras y garantice cogobierno democrático.',
-      justification: 'Los profesorados estatales concentran la enorme mayoría de futuros docentes (más del 74% de la matrícula en CABA) y son la columna vertebral del sistema público.',
-      problem: 'Desarticulación institucional, avance de lógicas universitarias sin concursos ni territorialidad (ej. UdelaCiudad) y cierre de profesorados.',
+      description: 'Planificación federal de la formación docente que jerarquice a los institutos históricos, impida el cierre de carreras, garantice cogobierno democrático e impulse una reforma de planes de estudio hecha por y para docentes.',
+      justification: 'Los profesorados estatales concentran la enorme mayoría de futuros docentes (79% de la matrícula en CABA). La formación docente no puede quedar en manos de técnicos ajenos al aula, neurocientíficos u organismos internacionales.',
+      problem: 'Desarticulación institucional, cierre de profesorados y vaivenes curriculares entre corrientes didácticas (enfoque globalizador, psicogénesis, conciencia fonológica) sin revisionismo crítico ni foco en saber enseñar.',
       prompts: [
-        '¿Qué relación debería existir entre institutos históricos y universidades en un proyecto propio?',
-        '¿Cómo defendemos las carreras docentes frente a la caída de matrícula?'
+        '¿Qué debería poder hacer cualquier docente al recibirse (planificar y enseñar cualquier contenido) y qué revisionismo crítico necesitan nuestros planes de estudio?',
+        '¿Cómo defendemos las carreras docentes y la autonomía de los institutos frente al cierre de ofertas y reformas externas?'
       ]
     },
     {
       num: 5,
       group: 2,
       title: 'Trayectorias Estudiantiles en Profesorados',
-      description: 'Becas integrales, jardines materno-paternales en los institutos, acompañamiento en lectura/escritura superior y formatos de cursada compatibles con el trabajo.',
+      description: 'Becas integrales, jardines materno-paternales en los institutos, acompañamiento en lectura/escritura superior y formatos de cursada (combinando presencialidad y virtualidad) compatibles con el trabajo.',
       justification: 'Quienes estudiamos docencia somos en gran parte primera generación de educación superior, trabajadores/as y personas con tareas de cuidado.',
       problem: 'Alta deserción en los primeros años de los profesorados y ausencia de cifras públicas claras de permanencia y egreso.',
       prompts: [
         '¿Qué políticas concretas necesita hoy un/a estudiante de profesorado para no abandonar en 1° o 2° año?',
-        '¿Cómo equilibramos presencialidad, calidad académica y realidad laboral?'
+        '¿Cómo equilibramos presencialidad, virtualidad, calidad académica y realidad laboral sin vaciar los institutos?'
       ]
     },
     {
@@ -1196,10 +1196,11 @@ window.APP_DATA = {
       group: 2,
       title: 'Formación Continua Situada, Gratuita y No Mercantil',
       description: 'Reemplazo del mercado de cursos "junta-puntaje" por trayectos gratuitos, en horario laboral, anclados en los problemas reales de cada escuela.',
-      justification: 'El saber pedagógico se construye colectivamente desde la práctica situada, no comprando certificados individuales.',
-      problem: 'Inestabilidad laboral en dispositivos de capacitación (ej. Escuela de Maestros) y cierre de postítulos clave como el de ESI.',
+      justification: 'El saber pedagógico se construye colectivamente desde la práctica situada, no comprando certificados individuales a empresas.',
+      problem: 'Inestabilidad laboral en dispositivos de capacitación (ej. Escuela de Maestros), cierre de postítulos clave como el de ESI y mercantilización del puntaje docente.',
       prompts: [
-        '¿Qué temas urgentes (salud mental, alfabetización, IA, ESI) debería garantizar gratuitamente el Estado para docentes en ejercicio?'
+        '¿Qué temas urgentes (salud mental, alfabetización, IA, ESI) debería garantizar gratuitamente el Estado para docentes en ejercicio y por qué?',
+        '¿Qué otras maneras de formación continua situada y no mercantil se te ocurren?'
       ]
     },
     {
@@ -1207,7 +1208,7 @@ window.APP_DATA = {
       group: 3,
       title: 'Desborde Escolar y Redes Intersectoriales de Cuidado',
       description: 'Fortalecimiento de Equipos de Orientación Escolar (EOE) y articulación obligatoria con salud, niñez y desarrollo social.',
-      justification: 'Poner a los NNyA en el centro ("los únicos privilegiados") exige que la escuela no quede sola frente a la crisis social.',
+      justification: 'Poner a los Niños, Niñas y Adolescentes (NNyA) en el centro ("los únicos privilegiados") exige que la escuela no quede sola frente a la crisis social.',
       problem: 'Docentes y directivos desbordados atendiendo crisis familiares, violencias, consumos y padecimientos de salud mental sin equipos suficientes.',
       prompts: [
         '¿Hasta dónde llega la tarea docente y dónde empieza la responsabilidad de otras áreas del Estado?',
@@ -1217,20 +1218,20 @@ window.APP_DATA = {
     {
       num: 8,
       group: 3,
-      title: 'Educación Sexual Integral (ESI) y Derechos de la Niñez',
-      description: 'Implementación efectiva y financiada de la Ley 26.150 en todos los niveles y en la formación docente inicial y continua.',
-      justification: 'Educar es ampliar derechos, prevenir violencias, construir vínculos igualitarios y reconocer a NNyA como sujetos de derecho.',
-      problem: 'Desfinanciamiento nacional de la ESI, cierre de postítulos jurisdiccionales y ataques ideológicos conservadores.',
+      title: 'ESI, Derechos de la Niñez y Crítica al Discurso Socioemocional',
+      description: 'Implementación efectiva y financiada de la Ley 26.150 en todos los niveles y en la formación docente, frente al paradigma de la "educación socioemocional" individualista.',
+      justification: 'Educar es ampliar derechos, prevenir violencias y construir contención colectiva, no responsabilizar al individuo de "manejar y controlar sus emociones" en soledad.',
+      problem: 'Desfinanciamiento nacional de la ESI, cierre de postítulos jurisdiccionales, ataques conservadores y avance de discursos socioemocionales lavados e individualizantes.',
       prompts: [
         '¿Qué lugar real tiene hoy la ESI en nuestros planes de estudio de profesorado?',
-        '¿Cómo disputar el sentido de la ESI frente a los discursos de odio?'
+        '¿Cómo disputar el sentido frente a los discursos de odio y al sentido común individualista de la "educación socioemocional"?'
       ]
     },
     {
       num: 9,
       group: 3,
       title: 'Escuela, Comunidad y Gestión Social',
-      description: 'Impulso a cooperadoras, bachilleratos populares, alimentación escolar saludable (SAE) y espacios puente con clubes y centros culturales.',
+      description: 'Impulso a cooperadoras, bachilleratos populares, alimentación escolar saludable (SAE) articulada con soberanía alimentaria y espacios puente con clubes y centros culturales.',
       justification: 'La educación no empieza ni termina en la puerta del aula: el tejido comunitario es parte del sujeto pedagógico de Patria Grande.',
       problem: 'Aislamiento institucional de las escuelas, tercerización precaria de comedores escolares y estigmatización de experiencias comunitarias.',
       prompts: [
@@ -1244,34 +1245,34 @@ window.APP_DATA = {
       title: 'Soberanía Digital, IA y Ética del Encuentro',
       description: 'Infraestructura y plataformas públicas soberanas, formación docente crítica en IA, protección de datos y reemplazo de celulares por dispositivos estatales.',
       justification: 'No aceptamos ni la tecnofobia ni la entrega acrítica a las corporaciones tecnológicas: la tecnología debe servir al desarrollo humano.',
-      problem: 'Brecha digital (45% de estudiantes sin computadora en el hogar), uso problemático de pantallas y captura algorítmica de la atención.',
+      problem: 'Brecha digital (45% de estudiantes sin computadora en el hogar) y el mito de los "nativos digitales": saben scrollear en el celular, pero faltan herramientas básicas de computación e investigación.',
       prompts: [
-        '¿Cómo usamos la IA en la formación docente sin atrofiar el pensamiento crítico?',
-        '¿Qué opinamos de la propuesta del libro de suspender celulares en niveles obligatorios?'
+        '¿A qué nos referimos cuando decimos que son "nativos digitales" y qué brechas reales vemos entre usar el celular y manejar una computadora o investigar fuentes?',
+        '¿Cómo usamos la IA en la formación docente sin atrofiar el pensamiento crítico y qué opinamos de suspender celulares en niveles obligatorios?'
       ]
     },
     {
       num: 11,
       group: 4,
-      title: 'Educación, Trabajo y Proyecto Productivo Nacional',
+      title: 'Educación, Trabajo, Modelo Secundario y Proyecto Nacional',
       description: 'Articulación de la secundaria, la ETP y el nivel superior con la reindustrialización, la economía popular, la ecología integral y el sistema científico.',
-      justification: 'Educar "para qué país": necesitamos una escuela que dialogue con el trabajo digno y la soberanía nacional, no con la precarización.',
-      problem: 'Crisis de sentido de la escuela secundaria y desconexión entre las carreras superiores y un modelo económico reprimarizado.',
+      justification: 'Educar "para qué país": necesitamos una escuela que dialogue con el trabajo digno y la soberanía nacional, pensada desde la realidad cotidiana de las aulas.',
+      problem: 'Crisis de sentido de la escuela secundaria, debates desconectados de lo que pasa realmente en las aulas y desvinculación de las carreras superiores con la producción.',
       prompts: [
-        '¿Para qué modelo de país estamos formando estudiantes hoy?',
-        '¿Cómo incorporar la ecología integral y el mundo del trabajo en nuestras materias?'
+        '¿Qué modelo de escuela secundaria necesitamos hoy y qué desconexiones vemos entre quienes diseñan reformas y las aulas reales?',
+        '¿Para qué modelo de país estamos formando estudiantes y cómo incorporar el mundo del trabajo y la ecología integral?'
       ]
     },
     {
       num: 12,
       group: 4,
       title: 'Pedagogía Nuestroamericana y Evaluación Emancipadora',
-      description: 'Currículas descolonizadas con memoria histórica, Malvinas y Patria Grande, y un sistema de evaluación integral no punitivo.',
+      description: 'Currículas descolonizadas con memoria histórica, Malvinas y Patria Grande, y un sistema de evaluación integral territorializado y no punitivo.',
       justification: 'Como enseñaron Martí, Freire y Jauretche, no hay liberación sin pensamiento propio ni justicia educativa con rankings que culpan a los pobres.',
-      problem: 'Uso punitivo de pruebas estandarizadas para estigmatizar escuelas públicas y avance de enfoques por "habilidades" vaciados de contenido crítico.',
+      problem: 'Uso punitivo de pruebas estandarizadas (Aprender, FEPBA, TESBA) para estigmatizar escuelas públicas y falta de criterios propios sobre qué y cómo evaluar.',
       prompts: [
         '¿Qué saberes nuestroamericanos y populares faltan en el diseño curricular actual?',
-        '¿Cómo evaluar para mejorar la enseñanza sin caer en la meritocracia?'
+        '¿Qué enfoques y territorialización deberían tener las evaluaciones para diagnosticar sin estigmatizar ni caer en la meritocracia?'
       ]
     }
   ]
