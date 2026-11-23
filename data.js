@@ -2,7 +2,7 @@
 
 window.APP_DATA = {
   // Pegar acá la URL de Firebase Realtime Database (ej: 'https://mi-proyecto-default-rtdb.firebaseio.com')
-  firebaseDbUrl: '',
+  firebaseDbUrl: 'https://la-marti-juego-default-rtdb.firebaseio.com',
 
   // 6 pares de ejes = 12 polos internos dentro del campo nacional, popular y humanista
   axes: [
