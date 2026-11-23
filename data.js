@@ -981,134 +981,135 @@ window.APP_DATA = {
     }
   ],
 
-  // 6 preguntas rápidas de estadísticas educativas para competir entre grupos (Paso 2)
-  eduTrivia: [
+  // 10 rondas del juego físico "Carrera por el Objeto" (Prode del Forms + Datos Págs. 4-11 FDHI Educación CABA)
+  physicalGameRounds: [
     {
-      tag: 'Presupuesto Nacional',
-      question: '¿Cuánto cayó en términos reales el presupuesto educativo nacional entre 2023 y 2026?',
-      options: ['19%', '32%', '49%'],
-      correctIdx: 2,
-      explain: 'Cayó un 49% real, con recortes de más del 70% en infraestructura y del 75% en becas Progresar (Perspectivas estratégicas, p. 419).'
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'La prioridad #1 de nuestra reunión',
+      prompt: 'Antes de mostrar el gráfico del Forms: ¿cuál fue la problemática o eje más votado por todos nosotros hoy?',
+      answer: 'El organizador destapa la pestaña Respuestas del Google Forms y suma +10 pts al grupo que más se acerque.'
     },
     {
-      tag: 'Formación Docente CABA',
-      question: 'En CABA hay más institutos privados (34) que estatales (28), pero ¿qué porcentaje de la matrícula docente estudia en el Estado?',
-      options: ['Alrededor del 45%', 'Más del 74% (24.509 vs 8.380)', 'Cerca del 30%'],
-      correctIdx: 1,
-      explain: 'En 2024 hubo 24.509 estudiantes en profesorados estatales frente a 8.380 en privados: el sistema público sostiene el núcleo formativo (FDHI CABA, p. 47).'
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'Termómetro de consenso',
+      prompt: 'En la pregunta principal del Forms, ¿qué porcentaje aproximado sacó la opción ganadora?',
+      answer: 'Se verifica en el gráfico de torta del Forms. El grupo con la estimación más cercana suma +10 pts.'
     },
     {
-      tag: 'Desigualdad Social y Escuela',
-      question: 'Según la EPH-INDEC (2do sem. 2025), ¿qué porcentaje de chicos en edad de escolarización obligatoria vive bajo la línea de pobreza?',
-      options: ['Más del 40%', 'Alrededor del 22%', 'Cerca del 15%'],
-      correctIdx: 0,
-      explain: 'Más del 40% de niños, niñas y adolescentes en edad escolar está bajo la línea de pobreza, lo que explica el fenómeno de "escuelas desbordadas" (p. 417).'
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'La mayor división / sorpresa',
+      prompt: '¿En qué pregunta del Forms estuvieron más parejas o divididas las respuestas entre compas?',
+      answer: 'Se chequea en vivo en los gráficos del Forms (+10 pts al grupo que acierte el tema más dividido).'
     },
     {
-      tag: 'Brecha Digital',
-      question: 'Según el Informe Nacional de Indicadores Educativos, ¿qué porcentaje de las escuelas del país cuenta con conectividad en las aulas?',
-      options: ['El 85%', 'El 60%', 'Apenas el 33%'],
-      correctIdx: 2,
-      explain: 'Solo el 68% de las escuelas tiene internet y apenas el 33% llega con conectividad a las aulas; además, el 45% de los estudiantes no tiene computadora en su casa (p. 417).'
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'Presupuesto educativo en CABA (Pág. 4)',
+      prompt: 'En 2015, Educación representaba el 23% del presupuesto total de la Ciudad. ¿A qué porcentaje cayó en 2023 y se proyecta retroceder en 2026?',
+      answer: 'Cayó al 19% en 2023, tuvo una leve recuperación al 20% en 2024 y se proyecta un nuevo retroceso al 19% en 2026 (Pág. 4).'
     },
     {
-      tag: 'Desigualdad en Aprendizajes',
-      question: 'En Aprender 2024 (Matemática), el 54,6% quedó por debajo del nivel básico. ¿A cuánto sube esa cifra en el quintil de menores ingresos?',
-      options: ['Al 58%', 'Al 70%', 'Al 45%'],
-      correctIdx: 1,
-      explain: 'Sube al 70% en el quintil más pobre: la desigualdad social impacta de lleno en la desigualdad educativa (p. 418).'
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'Gestión estatal vs. privada en Formación Docente (Pág. 9)',
+      prompt: 'En CABA, el 51% de los estudiantes de inicial, primaria y secundaria va a escuelas privadas. ¿Qué porcentaje de estudiantes de Formación Docente Inicial cursa en el Estado?',
+      answer: '¡El 79% cursa en la gestión estatal! A diferencia de otros niveles, el Estado sigue siendo el núcleo de la formación docente (Pág. 9).'
     },
     {
-      tag: 'Presupuesto CABA',
-      question: '¿Cómo evolucionó el peso de la inversión educativa sobre el presupuesto total de CABA entre 2015 y 2026?',
-      options: ['Subió del 20% al 25%', 'Se mantuvo estable en 23%', 'Bajó del 23% al 19%'],
-      correctIdx: 2,
-      explain: 'Cayó del 23% en 2015 al 19% en 2023, subió levemente al 20% en 2024 y se proyecta otra baja al 19% en 2026 (FDHI CABA, p. 4).'
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'Desigualdad territorial por barrios (Pág. 8)',
+      prompt: 'En nivel inicial, la oferta estatal promedio es 37%, pero en Villa Lugano llega al 71%. ¿A cuánto baja en la Comuna 2 (Recoleta)?',
+      answer: 'Baja al 19% en la Comuna 2. En secundaria pasa algo similar: 57% estatal en San Telmo vs. 23% en Villa Riachuelo (Pág. 8).'
+    },
+    {
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: '¿Cuántos Institutos de Formación Docente estatales hay? (Pág. 7)',
+      prompt: 'Además de la UdelaCiudad (creada en 2018), ¿cuántos Institutos de Formación Docente de gestión estatal existen en CABA?',
+      answer: 'Existen 29 Institutos de Formación Docente de gestión estatal dependientes del Ministerio de Educación (Pág. 7).'
+    },
+    {
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'El vacío de la "gestión social" (Pág. 9-10)',
+      prompt: 'La Ley Nacional 26.206 reconoce la gestión estatal, privada y social (bachilleratos populares, cooperativas). ¿Cómo la registra CABA?',
+      answer: 'CABA no reconoce la gestión social: solo reconoce estatal y privada, metiendo a las experiencias comunitarias y sindicales dentro de la matrícula privada (Pág. 9).'
+    },
+    {
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'Organización gremial y estudiantil (Pág. 10-11)',
+      prompt: '¿Cómo se llama la coordinadora que nuclea a los Centros de Estudiantes de los Institutos de Formación Docente en CABA (y cuántos sindicatos docentes hay)?',
+      answer: 'La CET (Coordinadora de Estudiantes Terciarios), junto a la CEB en secundarios, Cooperadoras y 17 sindicatos docentes liderados por UTE-CTERA (Pág. 10-11).'
+    },
+    {
+      block: 'Ronda B · Datos CABA (Págs. 4–11)',
+      title: 'Marco normativo de la Ciudad (Pág. 11)',
+      prompt: 'La Constitución de CABA (arts. 23-25) garantiza la educación pública, pero ¿qué norma clave sigue faltando en la Ciudad de Buenos Aires?',
+      answer: 'CABA no cuenta todavía con una Ley General de Educación propia (Pág. 11).'
     }
   ],
 
-  // Datos de diagnóstico educativo (de ambos PDFs)
+  // Datos de diagnóstico educativo (Págs. 4 a 11 de FDHI.00.26--EDUCACION)
   eduStats: [
     {
-      number: '-49%',
-      label: 'Caída real del presupuesto educativo nacional entre 2023 y 2026 (con recortes >70% en infraestructura y 75% en becas Progresar).',
-      source: 'Perspectivas estratégicas, Cap. 16 (p. 419)',
+      number: '23% → 19%',
+      label: 'Inversión educativa sobre el presupuesto total de CABA: cayó del 23% (2015) al 19% (2023), 20% (2024) y se proyecta 19% en 2026.',
+      source: 'FDHI Educación CABA, Pág. 4',
       accent: ''
     },
     {
-      number: '54,6% / 70%',
-      label: 'Estudiantes por debajo del nivel básico en Matemática (Aprender 2024): 54,6% en el total y 70% en el quintil de menores ingresos.',
-      source: 'Perspectivas estratégicas, Cap. 16 (p. 418)',
-      accent: 'accent-gold'
+      number: '79% Estatal',
+      label: 'En Formación Docente Inicial el 79% cursa en gestión estatal, mientras en inicial/primario/secundario el 51% asiste a privadas.',
+      source: 'FDHI Educación CABA, Pág. 9',
+      accent: 'accent-green'
     },
     {
-      number: '23% → 19%',
-      label: 'Baja de la inversión educativa sobre el presupuesto total de CABA entre 2015 y 2023/2026 (20% en 2024).',
-      source: 'FDHI.00.26 Educación CABA (p. 4)',
+      number: '29 IFD',
+      label: 'Institutos de Formación Docente de gestión estatal en CABA (junto a UdelaCiudad, creada en 2018 por Ley N° 6.053).',
+      source: 'FDHI Educación CABA, Pág. 7',
       accent: 'accent-blue'
     },
     {
-      number: '24.509 vs 8.380',
-      label: 'Matrícula de Formación Docente en CABA (2024): el sector estatal sostiene el núcleo formativo frente al privado, aunque cayó entre 2020 y 2024.',
-      source: 'FDHI.00.26 Educación CABA, Sec. 4.8 (p. 47)',
-      accent: 'accent-green'
+      number: '19% vs 71%',
+      label: 'Brecha territorial en nivel inicial estatal: 19% en Comuna 2 frente a 71% en Villa Lugano (y 23% en Villa Riachuelo en secundaria).',
+      source: 'FDHI Educación CABA, Pág. 8',
+      accent: 'accent-gold'
     }
   ],
 
   eduProposals: [
     {
       category: 'niveles',
-      title: 'Nivel Inicial: Cuidado y Pedagogía',
+      title: 'Mapa del Sistema Educativo en CABA (Págs. 6–8)',
       items: [
-        'Conducción integral desde el área educativa nacional para superar la fragmentación con áreas sociales.',
-        'Ampliar oferta pública de 45 días a 2 años y universalizar salas de 3, 4 y 5 con jornada extendida opcional.',
-        'Integrar funciones de cuidado y alfabetización cultural, artística y científica temprana.'
-      ]
-    },
-    {
-      category: 'niveles',
-      title: 'Nivel Primario: Parejas Pedagógicas',
-      items: [
-        'Aprovechar la caída de la natalidad para mejorar la enseñanza en lugar de cerrar grados o cargos.',
-        'Implementar parejas pedagógicas en el primer ciclo para fortalecer la alfabetización inicial.',
-        'Universalizar la jornada completa o extendida con idiomas, ciencias, arte y deporte en articulación comunitaria.'
-      ]
-    },
-    {
-      category: 'niveles',
-      title: 'Nivel Secundario: Nuevo Modelo',
-      items: [
-        'Reestructurar el currículum por áreas integradas, dialogando con la vida y expectativas juveniles.',
-        'Sistema integral de seguimiento temprano del ausentismo y ampliación de becas.',
-        'Espacios puente territoriales con organizaciones sociales, vínculo con universidades y fortalecimiento técnico-profesional.'
+        '2.720 unidades educativas totales (46% gestión estatal) y 779.501 estudiantes (56% estatal si se incluyen adultos y especial).',
+        'En nivel inicial solo el 47% de la matrícula es estatal y en secundaria el 49%, con fuerte desigualdad entre el norte y el sur.',
+        'La Educación Especial se organiza en Escalafón A (hospitalaria/domiciliaria), B (EII, CEI, CENTES) y C (escuelas especiales).'
       ]
     },
     {
       category: 'formacion',
-      title: 'Formación Docente y Profesorados',
+      title: 'Centralidad Estatal en Formación Docente (Págs. 7 y 9)',
       items: [
-        'Articular la extensa red de ISFD/ENS/IES con acuerdos comunes sin perder arraigo regional.',
-        'Acompañar trayectorias de estudiantes que son primera generación superior y trabajan o tienen tareas de cuidado.',
-        'Formación continua gratuita con sentido pedagógico (superar la lógica mercantil del "puntaje"), tutores de docentes noveles y recomposición salarial.'
-      ]
-    },
-    {
-      category: 'formacion',
-      title: 'Alertas en CABA (FDHI 2026)',
-      items: [
-        'Disputa por el centro de gravedad de la formación docente entre UdelaCiudad (sin series estadísticas comparables ni concursos plenos) e institutos históricos.',
-        'Cierre de ofertas estratégicas en institutos públicos (ej. Lengua y Física en el IES N° 2 Mariano Acosta) y cierre del postítulo de ESI en 2025.',
-        'Urgencia de fortalecer lectura/escritura superior y formatos de cursada compatibles con la realidad laboral.'
+        'Frente al predominio privado en otros niveles, el 79% de quienes se forman como docentes en CABA eligen el sistema estatal (29 IFD y ENS).',
+        'En Educación de Adultos (CENS, escuelas de reingreso, bachilleratos, contextos de encierro) la matrícula estatal llega al 97%.',
+        'Fuerte tradición de organización estudiantil en terciarios (CET), secundarios (CEB), familias (Cooperadoras) y 17 sindicatos docentes.'
       ]
     },
     {
       category: 'transversal',
-      title: 'Escuela, Comunidad y Mundo Digital',
+      title: 'Las 8 Problemáticas Centrales en CABA (Págs. 4–5)',
       items: [
-        'Equipos interdisciplinarios para salud mental y violencias, alimentación escolar saludable, cooperadoras y ciudades educadoras.',
-        'Política nacional de educación digital crítica, plataformas públicas soberanas y regulación de la IA.',
-        'Suspensión del uso de celulares en niveles obligatorios y reemplazo por dispositivos estatales garantizados.',
-        'Evaluación integral no punitiva ni competitiva orientada a reducir desigualdades.'
+        '1) Baja matrícula en inicial y primario por caída de natalidad, con déficit de vacantes en el sur y de jornada completa.',
+        '2) Crecimiento de padecimientos de salud mental en NNyA, falta de personal en EOE y saturación del sistema de salud.',
+        '3) Sobrecarga laboral docente y directiva, trabas en licencias médicas y en el ascenso en la carrera.',
+        '4) Dificultades en secundaria profundizadas por reformas permanentes (Plan BA Aprende), debates en Lengua/Matemática y desafíos de inclusión.',
+        '5) Déficits de infraestructura, transporte, alimentación escolar y desarticulación / caída de matrícula en los IFD.'
+      ]
+    },
+    {
+      category: 'transversal',
+      title: 'Vacíos Normativos y Gestión Social (Págs. 9–11)',
+      items: [
+        'CABA no reconoce la "gestión social" (organizaciones sociales, cooperativas, bachilleratos populares) prevista en la Ley Nacional 26.206.',
+        'La Ciudad todavía carece de una Ley General de Educación propia (solo cuenta con los arts. 23-25 de la Constitución de CABA).',
+        'Reorganización territorial en curso: la Ley N° 6.888 (2025) agrupa los 21 Distritos Escolares por comuna.'
       ]
     }
   ],

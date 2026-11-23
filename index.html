@@ -194,69 +194,81 @@
 
     <!-- TAB: PASO 2 JUEGO DE COMPETENCIA ENTRE GRUPOS -->
     <section id="tab-juego-grupos" class="tab-panel">
-      <div class="card">
-        <div class="section-head-row">
+      <!-- SELECTOR DE ROL (PARTICIPANTE vs ORGANIZADOR) -->
+      <div id="role-gate" class="card" style="max-width:620px; margin:1rem auto;">
+        <div class="eyebrow">• PASO 2 · JUEGO PRESENCIAL POR GRUPOS</div>
+        <h2>¿Cómo estás participando?</h2>
+        <p class="section-desc">
+          Elegí tu rol para entrar al tablero de la competencia. Quien coordina puede sumar puntos y revelar las respuestas de cada ronda.
+        </p>
+        <div class="role-choice-grid">
+          <button id="btn-choose-participant" class="role-card-btn">
+            <span class="role-emoji">🙋</span>
+            <strong>Participante</strong>
+            <span>Veo el marcador y la dinámica en vivo</span>
+          </button>
+          <button id="btn-choose-organizer" class="role-card-btn">
+            <span class="role-emoji">🎛️</span>
+            <strong>Organizador</strong>
+            <span>Controlo el marcador, las rondas y respuestas</span>
+          </button>
+        </div>
+
+        <div id="organizer-auth-box" class="auth-box hidden">
+          <label class="field-label" for="organizer-pass-input">Ingresá la contraseña de organizador:</label>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <input id="organizer-pass-input" type="password" class="select-input" style="flex:1;" placeholder="Contraseña..." />
+            <button id="btn-organizer-login" class="btn btn-navy">Entrar</button>
+          </div>
+          <p id="organizer-auth-error" class="auth-error hidden"></p>
+        </div>
+      </div>
+
+      <!-- ARENA DEL JUEGO -->
+      <div id="game-arena" class="hidden">
+        <div class="card">
+          <div class="section-head-row">
+            <div>
+              <div class="eyebrow">• PASO 2 · CARRERA POR EL OBJETO (BOTÓN HUMANO)</div>
+              <h2>Competencia: Prode del Forms &amp; Datos CABA (Págs. 4–11)</h2>
+              <p class="section-desc" style="margin-bottom:0;">
+                <strong>Regla:</strong> Ponemos un objeto en el centro de la sala (un fibrón, botella o pañuelo). Al leer la consigna, un compa de cada grupo <strong>corre, agarra el objeto como botón y responde en voz alta</strong>. ¡Quien sume más puntos elige primero los ejes en el Paso 4!
+              </p>
+            </div>
+            <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+              <span id="role-status-badge" class="pill">👁️ Modo Participante</span>
+              <button id="btn-switch-role" class="btn btn-outline" style="padding:0.45rem 0.75rem; font-size:0.82rem;">Cambiar rol</button>
+              <button id="btn-reset-scoreboard" class="btn btn-outline org-only hidden" style="padding:0.45rem 0.75rem; font-size:0.82rem;">Reiniciar puntos</button>
+            </div>
+          </div>
+          <div id="team-scoreboard" class="scoreboard-grid"></div>
+        </div>
+
+        <div class="card quiz-card-clean" style="max-width:780px; margin:0 auto 1.25rem;">
+          <div id="phys-watermark" class="quiz-watermark">01</div>
+          <div class="quiz-top-meta" style="margin-bottom:0.5rem;">
+            <span id="phys-progress">Ronda 1 de 10</span>
+            <span id="phys-block" style="color:var(--primary); font-weight:800;"></span>
+          </div>
+          <h3 id="phys-title" class="quiz-question-clean" style="margin-bottom:0.6rem;"></h3>
+          <p id="phys-prompt" style="font-size:1.05rem; color:var(--ink); margin:0 0 1rem;"></p>
+
+          <div id="phys-answer-box" class="game-feedback hidden"></div>
+
+          <div class="quiz-footer org-only hidden" id="phys-org-controls">
+            <button id="btn-phys-prev" class="btn btn-outline">← Anterior</button>
+            <button id="btn-phys-reveal" class="btn btn-secondary">👁️ Revelar respuesta</button>
+            <button id="btn-phys-next" class="btn btn-navy">Siguiente ronda →</button>
+          </div>
+        </div>
+
+        <div class="next-step-banner card">
           <div>
-            <div class="eyebrow">• PASO 2 · COMPETENCIA ENTRE GRUPOS PARA ELEGIR EJES</div>
-            <h2>Prode del Forms &amp; Trivia de Datos Educativos</h2>
-            <p class="section-desc" style="margin-bottom:0;">
-              El grupo que sume más puntos elige primero qué bloque de ejes quiere trabajar en el Paso 4.
-            </p>
+            <strong>¿Ya definieron el orden de grupos?</strong>
+            <p>Pasemos al Diagnóstico (Págs. 4–11) para ver el panorama completo y qué temas faltaron en el Forms.</p>
           </div>
-          <button id="btn-reset-scoreboard" class="btn btn-outline">Reiniciar marcador</button>
+          <button class="btn btn-navy" data-goto="educacion-pg">Ir a Paso 3: Diagnóstico Educativo →</button>
         </div>
-        <div id="team-scoreboard" class="scoreboard-grid"></div>
-      </div>
-
-      <div class="game-two-col">
-        <div class="card">
-          <div class="eyebrow">• RONDA A · PRODE DEL FORMS (EN VIVO)</div>
-          <h3>Adiviná qué votó la reunión</h3>
-          <p class="section-desc">
-            Antes de mostrar cada gráfico en la pestaña <em>Respuestas</em> de Google Forms, cada grupo tira su pronóstico. El que más se acerque suma puntos en el marcador de arriba.
-          </p>
-          <div class="prode-list">
-            <div class="prode-item">
-              <strong>1. La prioridad #1 de la sala</strong>
-              <span>¿Qué problemática o eje creen que salió más votado en el Forms? (+10 pts al que acierte)</span>
-            </div>
-            <div class="prode-item">
-              <strong>2. Termómetro de consenso</strong>
-              <span>¿Con qué porcentaje exacto ganó la opción más elegida en la pregunta clave? (+10 pts al más cercano)</span>
-            </div>
-            <div class="prode-item">
-              <strong>3. El mayor empate / grieta</strong>
-              <span>¿En qué pregunta del Forms hubo más división entre compas? (+10 pts al que le pegue)</span>
-            </div>
-            <div class="prode-item">
-              <strong>4. El gran ausente</strong>
-              <span>¿Qué tema importante casi nadie marcó, pero sí aparece fuerte en los datos reales? (+10 pts)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="eyebrow">• RONDA B · TRIVIA DE ESTADÍSTICAS REALES</div>
-          <div class="quiz-top-meta">
-            <span id="trivia-progress">Pregunta 1 de 6</span>
-            <span id="trivia-tag" style="color:var(--primary); font-weight:800;"></span>
-          </div>
-          <h3 id="trivia-question" style="margin-top:0.35rem;"></h3>
-          <div id="trivia-options" class="game-options" style="margin-top:0.85rem;"></div>
-          <div id="trivia-feedback" class="game-feedback hidden"></div>
-          <div class="quiz-footer">
-            <button id="btn-trivia-prev" class="btn btn-outline">← Anterior</button>
-            <button id="btn-trivia-next" class="btn btn-navy">Siguiente dato →</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="next-step-banner card">
-        <div>
-          <strong>¿Ya tenemos el podio de grupos?</strong>
-          <p>Pasemos al Diagnóstico Educativo para ver el panorama completo y qué temas faltaron en el Forms.</p>
-        </div>
-        <button class="btn btn-navy" data-goto="educacion-pg">Ir a Paso 3: Diagnóstico Educativo →</button>
       </div>
     </section>
     <!-- TAB 1: 12 AXES PATRIA GRANDE -->
@@ -499,11 +511,10 @@
     <!-- TAB 3: EDUCACIÓN SEGÚN PATRIA GRANDE / FDHI -->
     <section id="tab-educacion-pg" class="tab-panel">
       <div class="card section-intro">
-        <span class="hero-tag">Paso 3 · Diagnóstico de la Fundación DHI (Nacional y CABA)</span>
-        <h2>La Educación que plantea el PDHI</h2>
+        <span class="hero-tag">Paso 3 · Diagnóstico de la Fundación DHI (CABA · Págs. 4–11)</span>
+        <h2>Radiografía Educativa en CABA (Págs. 4–11)</h2>
         <p>
-          Datos y propuestas extraídos de <em>Política educativa: fortalecer la escuela para reducir desigualdades</em>
-          (<em>Perspectivas estratégicas</em>, 2026) y del informe <em>Educación: Estado de situación en CABA</em> (FDHI, junio 2026).
+          Datos y problemáticas extraídos de las páginas 4 a 11 del informe <em>Educación: Estado de situación en CABA</em> (FDHI, junio 2026) para contrastar qué apareció en nuestro Forms y qué quedó afuera.
         </p>
       </div>
 

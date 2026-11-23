@@ -2094,3 +2094,67 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ROLE SELECTOR (PARTICIPANTE vs ORGANIZADOR) */
+.role-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.role-card-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 1.25rem 1rem;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface-alt);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.16s ease;
+}
+
+.role-card-btn:hover {
+  border-color: var(--primary);
+  background: #eaf5ee;
+  transform: translateY(-2px);
+}
+
+.role-emoji {
+  font-size: 2rem;
+}
+
+.role-card-btn strong {
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.role-card-btn span:last-child {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.auth-box {
+  margin-top: 1.15rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+}
+
+.auth-error {
+  margin: 0.6rem 0 0;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--crimson);
+}
+
+@media (max-width: 560px) {
+  .role-choice-grid {
+    grid-template-columns: 1fr;
+  }
+}

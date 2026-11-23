@@ -1130,27 +1130,104 @@
   });
 
   // ==========================================
-  // PASO 2: JUEGO ENTRE GRUPOS (MARCADOR + TRIVIA)
+  // PASO 2: JUEGO PRESENCIAL POR GRUPOS (PARTICIPANTE vs ORGANIZADOR)
   // ==========================================
-  const TEAMS_KEY = 'lamarti_teams_v1';
+  const TEAMS_KEY = 'lamarti_teams_v2';
+  const ORG_PASS = 'contraseña123';
+  let userRole = null; // 'participant' | 'organizer'
+  let physRoundIdx = 0;
+  let physRevealed = false;
   let teams = [
     { name: 'Grupo 1', score: 0 },
     { name: 'Grupo 2', score: 0 },
     { name: 'Grupo 3', score: 0 },
     { name: 'Grupo 4', score: 0 }
   ];
+
   try {
-    const savedTeams = JSON.parse(localStorage.getItem(TEAMS_KEY) || 'null');
-    if (Array.isArray(savedTeams) && savedTeams.length === 4) teams = savedTeams;
+    const savedGame = JSON.parse(localStorage.getItem(TEAMS_KEY) || 'null');
+    if (savedGame) {
+      if (Array.isArray(savedGame.teams) && savedGame.teams.length === 4) teams = savedGame.teams;
+      if (typeof savedGame.physRoundIdx === 'number') physRoundIdx = savedGame.physRoundIdx;
+      physRevealed = Boolean(savedGame.physRevealed);
+    }
   } catch (e) {}
 
-  function saveTeams() {
-    try { localStorage.setItem(TEAMS_KEY, JSON.stringify(teams)); } catch (e) {}
+  const liveChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('lamarti_live_game') : null;
+  if (liveChannel) {
+    liveChannel.onmessage = (ev) => {
+      if (ev.data && ev.data.type === 'sync') {
+        teams = ev.data.teams;
+        physRoundIdx = ev.data.physRoundIdx;
+        physRevealed = ev.data.physRevealed;
+        renderScoreboard();
+        renderPhysicalRound();
+      }
+    };
   }
+
+  function saveGameSync() {
+    const payload = { teams, physRoundIdx, physRevealed };
+    try { localStorage.setItem(TEAMS_KEY, JSON.stringify(payload)); } catch (e) {}
+    if (liveChannel) liveChannel.postMessage({ type: 'sync', ...payload });
+  }
+
+  function enterGameRole(role) {
+    userRole = role;
+    document.getElementById('role-gate')?.classList.add('hidden');
+    document.getElementById('game-arena')?.classList.remove('hidden');
+
+    const isOrg = role === 'organizer';
+    document.getElementById('role-status-badge').textContent = isOrg ? '🎛️ Modo Organizador' : '👁️ Modo Participante';
+    document.querySelectorAll('.org-only').forEach((el) => el.classList.toggle('hidden', !isOrg));
+    renderScoreboard();
+    renderPhysicalRound();
+  }
+
+  document.getElementById('btn-choose-participant')?.addEventListener('click', () => {
+    enterGameRole('participant');
+  });
+
+  document.getElementById('btn-choose-organizer')?.addEventListener('click', () => {
+    document.getElementById('organizer-auth-box')?.classList.remove('hidden');
+    document.getElementById('organizer-auth-error')?.classList.add('hidden');
+    document.getElementById('organizer-pass-input')?.focus();
+  });
+
+  function attemptOrganizerLogin() {
+    const inp = document.getElementById('organizer-pass-input');
+    const errEl = document.getElementById('organizer-auth-error');
+    const val = (inp?.value || '').trim();
+    if (val === ORG_PASS) {
+      if (inp) inp.value = '';
+      enterGameRole('organizer');
+    } else {
+      if (errEl) {
+        errEl.textContent = 'Contraseña incorrecta. Te invitamos a ingresar como Participante.';
+        errEl.classList.remove('hidden');
+      }
+      setTimeout(() => {
+        showToast('Ingresando como Participante...');
+        enterGameRole('participant');
+      }, 1400);
+    }
+  }
+
+  document.getElementById('btn-organizer-login')?.addEventListener('click', attemptOrganizerLogin);
+  document.getElementById('organizer-pass-input')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') attemptOrganizerLogin();
+  });
+
+  document.getElementById('btn-switch-role')?.addEventListener('click', () => {
+    document.getElementById('game-arena')?.classList.add('hidden');
+    document.getElementById('role-gate')?.classList.remove('hidden');
+    document.getElementById('organizer-auth-box')?.classList.add('hidden');
+  });
 
   function renderScoreboard() {
     const el = document.getElementById('team-scoreboard');
     if (!el) return;
+    const isOrg = userRole === 'organizer';
     const sortedScores = [...new Set(teams.map((t) => t.score))].sort((a, b) => b - a);
     const maxScore = sortedScores[0];
 
@@ -1161,89 +1238,107 @@
         return `
           <div class="team-card ${isLeader ? 'leader' : ''}">
             <div class="team-top">
-              <input class="team-name-input" type="text" value="${t.name}" data-team-name="${idx}" aria-label="Nombre del grupo ${idx + 1}" />
+              ${
+                isOrg
+                  ? `<input class="team-name-input" type="text" value="${t.name}" data-team-name="${idx}" aria-label="Nombre del grupo ${idx + 1}" />`
+                  : `<strong style="font-size:0.98rem;">${t.name}</strong>`
+              }
               <span class="team-rank">${rank}°</span>
             </div>
             <div class="team-score">${t.score} pts</div>
-            <div class="team-btns">
-              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="10">+10</button>
-              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="5">+5</button>
-              <button class="team-pts-btn" data-team-idx="${idx}" data-delta="-5">-5</button>
-            </div>
+            ${
+              isOrg
+                ? `<div class="team-btns">
+                    <button class="team-pts-btn" data-team-idx="${idx}" data-delta="10">+10</button>
+                    <button class="team-pts-btn" data-team-idx="${idx}" data-delta="5">+5</button>
+                    <button class="team-pts-btn" data-team-idx="${idx}" data-delta="-5">-5</button>
+                  </div>`
+                : ''
+            }
           </div>
         `;
       })
       .join('');
 
-    el.querySelectorAll('[data-team-name]').forEach((inp) => {
-      inp.addEventListener('change', () => {
-        teams[Number(inp.dataset.teamName)].name = inp.value.trim() || `Grupo ${Number(inp.dataset.teamName) + 1}`;
-        saveTeams();
+    if (isOrg) {
+      el.querySelectorAll('[data-team-name]').forEach((inp) => {
+        inp.addEventListener('change', () => {
+          teams[Number(inp.dataset.teamName)].name = inp.value.trim() || `Grupo ${Number(inp.dataset.teamName) + 1}`;
+          saveGameSync();
+        });
       });
-    });
 
-    el.querySelectorAll('[data-team-idx]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.dataset.teamIdx);
-        const delta = Number(btn.dataset.delta);
-        teams[idx].score = Math.max(0, teams[idx].score + delta);
-        saveTeams();
-        renderScoreboard();
+      el.querySelectorAll('[data-team-idx]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.dataset.teamIdx);
+          const delta = Number(btn.dataset.delta);
+          teams[idx].score = Math.max(0, teams[idx].score + delta);
+          saveGameSync();
+          renderScoreboard();
+        });
       });
-    });
+    }
   }
 
   document.getElementById('btn-reset-scoreboard')?.addEventListener('click', () => {
+    if (userRole !== 'organizer') return;
     teams.forEach((t) => { t.score = 0; });
-    saveTeams();
+    saveGameSync();
     renderScoreboard();
   });
 
-  let triviaIdx = 0;
-  function renderTrivia() {
-    if (!DATA.eduTrivia || !document.getElementById('trivia-question')) return;
-    const item = DATA.eduTrivia[triviaIdx];
-    const total = DATA.eduTrivia.length;
-    document.getElementById('trivia-progress').textContent = `Pregunta ${triviaIdx + 1} de ${total}`;
-    document.getElementById('trivia-tag').textContent = item.tag;
-    document.getElementById('trivia-question').textContent = item.question;
-    document.getElementById('btn-trivia-prev').disabled = triviaIdx === 0;
-    document.getElementById('btn-trivia-next').disabled = triviaIdx === total - 1;
+  function renderPhysicalRound() {
+    if (!DATA.physicalGameRounds || !document.getElementById('phys-title')) return;
+    const rounds = DATA.physicalGameRounds;
+    const item = rounds[physRoundIdx] || rounds[0];
+    const total = rounds.length;
 
-    const fb = document.getElementById('trivia-feedback');
-    fb.classList.add('hidden');
-    fb.innerHTML = '';
+    document.getElementById('phys-watermark').textContent = String(physRoundIdx + 1).padStart(2, '0');
+    document.getElementById('phys-progress').textContent = `Ronda ${physRoundIdx + 1} de ${total}`;
+    document.getElementById('phys-block').textContent = item.block;
+    document.getElementById('phys-title').textContent = item.title;
+    document.getElementById('phys-prompt').textContent = item.prompt;
 
-    const optsEl = document.getElementById('trivia-options');
-    optsEl.innerHTML = item.options
-      .map((opt, i) => `<button class="game-opt-btn" data-triv-idx="${i}">${opt}</button>`)
-      .join('');
+    const ansEl = document.getElementById('phys-answer-box');
+    if (physRevealed) {
+      ansEl.innerHTML = `<strong>Respuesta / Criterio:</strong> ${item.answer}`;
+      ansEl.classList.remove('hidden');
+    } else {
+      ansEl.classList.add('hidden');
+    }
 
-    optsEl.querySelectorAll('.game-opt-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const chosen = Number(btn.dataset.trivIdx);
-        const ok = chosen === item.correctIdx;
-        optsEl.querySelectorAll('.game-opt-btn').forEach((b, i) => {
-          b.disabled = true;
-          if (i === item.correctIdx) b.classList.add('correct');
-          else if (i === chosen) b.classList.add('wrong');
-        });
-        fb.innerHTML = `<strong>${ok ? '¡Correcto!' : 'Dato clave:'}</strong> ${item.explain}`;
-        fb.classList.remove('hidden');
-      });
-    });
+    const prevBtn = document.getElementById('btn-phys-prev');
+    const nextBtn = document.getElementById('btn-phys-next');
+    if (prevBtn) prevBtn.disabled = physRoundIdx === 0;
+    if (nextBtn) nextBtn.disabled = physRoundIdx === total - 1;
   }
 
-  document.getElementById('btn-trivia-prev')?.addEventListener('click', () => {
-    if (triviaIdx > 0) { triviaIdx--; renderTrivia(); }
+  document.getElementById('btn-phys-reveal')?.addEventListener('click', () => {
+    if (userRole !== 'organizer') return;
+    physRevealed = !physRevealed;
+    saveGameSync();
+    renderPhysicalRound();
   });
-  document.getElementById('btn-trivia-next')?.addEventListener('click', () => {
-    if (triviaIdx < DATA.eduTrivia.length - 1) { triviaIdx++; renderTrivia(); }
+
+  document.getElementById('btn-phys-prev')?.addEventListener('click', () => {
+    if (userRole !== 'organizer' || physRoundIdx === 0) return;
+    physRoundIdx--;
+    physRevealed = false;
+    saveGameSync();
+    renderPhysicalRound();
+  });
+
+  document.getElementById('btn-phys-next')?.addEventListener('click', () => {
+    if (userRole !== 'organizer' || physRoundIdx >= DATA.physicalGameRounds.length - 1) return;
+    physRoundIdx++;
+    physRevealed = false;
+    saveGameSync();
+    renderPhysicalRound();
   });
 
   // INIT
   renderScoreboard();
-  renderTrivia();
+  renderPhysicalRound();
   renderGameScenario();
   renderEduModule();
   render12Ejes();
