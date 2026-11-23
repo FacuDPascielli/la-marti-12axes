@@ -984,25 +984,43 @@ window.APP_DATA = {
     }
   ],
 
-  // 10 rondas del juego físico "Carrera por el Objeto" (Prode del Forms + Datos Págs. 4-11 FDHI Educación CABA)
+  // 12 rondas del juego físico "Carrera por el Objeto" (6 Prode del Forms real + 6 Datos Págs. 4-11 FDHI Educación CABA)
   physicalGameRounds: [
     {
       block: 'Ronda A · Prode del Forms (en vivo)',
-      title: 'La prioridad #1 de nuestra reunión',
-      prompt: 'Antes de mostrar el gráfico del Forms: ¿cuál fue la problemática o eje más votado por todos nosotros hoy?',
-      answer: 'El organizador destapa la pestaña Respuestas del Google Forms y suma +10 pts al grupo que más se acerque.'
+      title: 'Trabajo docente, puntaje y tercerización',
+      prompt: 'En el Forms preguntamos por la titularización a término con reválida, la tercerización de servicios y el sistema de puntaje/cursos. ¿En cuál de las tres creen que hubo MÁS división o respuestas "Neutral / De acuerdo"?',
+      answer: 'El organizador proyecta los 3 gráficos del Forms: se lleva +10 pts el grupo que acierte en qué pregunta hubo más dispersión (puntaje suele dividir más que tercerización).'
     },
     {
       block: 'Ronda A · Prode del Forms (en vivo)',
-      title: 'Termómetro de consenso',
-      prompt: 'En la pregunta principal del Forms, ¿qué porcentaje aproximado sacó la opción ganadora?',
-      answer: 'Se verifica en el gráfico de torta del Forms. El grupo con la estimación más cercana suma +10 pts.'
+      title: 'Educación mixta, mundo empresarial y competencias',
+      prompt: 'Preguntamos si el Estado debe priorizar un sistema mixto (público/privado/subvencionado) y sumar conceptos empresariales para niños que trabajan. ¿Qué porcentaje aproximado votó "Totalmente en desacuerdo"?',
+      answer: 'Se verifica en vivo en el gráfico de torta del Forms. El grupo que más se acerque al porcentaje real suma +10 pts.'
     },
     {
       block: 'Ronda A · Prode del Forms (en vivo)',
-      title: 'La mayor división / sorpresa',
-      prompt: '¿En qué pregunta del Forms estuvieron más parejas o divididas las respuestas entre compas?',
-      answer: 'Se chequea en vivo en los gráficos del Forms (+10 pts al grupo que acierte el tema más dividido).'
+      title: 'Duelo pedagógico: Constructivismo vs. Conductismo / Conciencia Fonológica',
+      prompt: 'En las afirmaciones sobre si el constructivismo y la psicogénesis "requieren situaciones ideales" y no sirven en crisis frente al conductismo/conciencia fonológica: ¿cuál fue la postura mayoritaria de la sala?',
+      answer: 'El organizador destapa ambos gráficos del Forms (+10 pts al grupo que acierte la tendencia mayoritaria o si ganó el "Neutral").'
+    },
+    {
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'Jornada Completa, Agrupamientos Flexibles y Repitencia',
+      prompt: 'Preguntamos por Jornada Completa obligatoria, agrupamientos flexibles vs. edad y eliminar la repitencia en todos los niveles. ¿Cuál de los tres generó la mayor grieta interna (50/50)?',
+      answer: 'Se chequea en vivo en los gráficos del Forms (+10 pts al grupo que pegue cuál dividió más aguas en la reunión).'
+    },
+    {
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'Emociones, castigos y autoridad docente',
+      prompt: 'Sobre el debilitamiento de la autoridad docente frente a la familiar y el rol de los castigos (quitar recreos, sanciones): ¿qué porcentaje estuvo "De acuerdo" o "Totalmente de acuerdo" con que se debilitó la autoridad?',
+      answer: 'Se mira el gráfico del Forms en vivo. ¡Ojo que suelen aparecer porcentajes altos! (+10 pts al más cercano).'
+    },
+    {
+      block: 'Ronda A · Prode del Forms (en vivo)',
+      title: 'Celulares en el aula e Inteligencia Artificial',
+      prompt: 'Última del Forms: ¿ganó prohibir el celular en el aula? ¿Y qué porcentaje vio a la IA como una oportunidad más que como una amenaza?',
+      answer: 'El organizador muestra ambos gráficos del Forms (+10 pts al grupo que acierte ambas tendencias).'
     },
     {
       block: 'Ronda B · Datos CABA (Págs. 4–11)',
@@ -1030,21 +1048,15 @@ window.APP_DATA = {
     },
     {
       block: 'Ronda B · Datos CABA (Págs. 4–11)',
-      title: 'El vacío de la "gestión social" (Pág. 9-10)',
+      title: 'El vacío de la "gestión social" (Pág. 9–10)',
       prompt: 'La Ley Nacional 26.206 reconoce la gestión estatal, privada y social (bachilleratos populares, cooperativas). ¿Cómo la registra CABA?',
       answer: 'CABA no reconoce la gestión social: solo reconoce estatal y privada, metiendo a las experiencias comunitarias y sindicales dentro de la matrícula privada (Pág. 9).'
     },
     {
       block: 'Ronda B · Datos CABA (Págs. 4–11)',
-      title: 'Organización gremial y estudiantil (Pág. 10-11)',
-      prompt: '¿Cómo se llama la coordinadora que nuclea a los Centros de Estudiantes de los Institutos de Formación Docente en CABA (y cuántos sindicatos docentes hay)?',
-      answer: 'La CET (Coordinadora de Estudiantes Terciarios), junto a la CEB en secundarios, Cooperadoras y 17 sindicatos docentes liderados por UTE-CTERA (Pág. 10-11).'
-    },
-    {
-      block: 'Ronda B · Datos CABA (Págs. 4–11)',
-      title: 'Marco normativo de la Ciudad (Pág. 11)',
-      prompt: 'La Constitución de CABA (arts. 23-25) garantiza la educación pública, pero ¿qué norma clave sigue faltando en la Ciudad de Buenos Aires?',
-      answer: 'CABA no cuenta todavía con una Ley General de Educación propia (Pág. 11).'
+      title: 'Organización estudiantil/gremial y Ley de Educación (Págs. 10–11)',
+      prompt: '¿Cómo se llama la coordinadora de Centros de Estudiantes Terciarios en CABA, cuántos sindicatos docentes hay y qué norma general falta en la Ciudad?',
+      answer: 'La CET (junto a la CEB en secundarios y Cooperadoras), 17 sindicatos liderados por UTE-CTERA, y CABA todavía NO tiene Ley General de Educación propia (Págs. 10–11).'
     }
   ],
 
